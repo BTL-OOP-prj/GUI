@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #E1F5F6;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SwitchScene">
+   <children>
+      <AnchorPane prefHeight="600.0" prefWidth="80.0" style="-fx-background-color: #089BAB;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane layoutX="3.0" layoutY="154.0" prefHeight="200.0" prefWidth="62.0" AnchorPane.bottomAnchor="150.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="150.0">
+               <children>
+                  <VBox prefHeight="329.0" prefWidth="80.0" spacing="30.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <JFXButton fx:id="dictionaryBtn" onAction="#switchToDictionary" prefHeight="80.0" prefWidth="80.0" style="-fx-background-color: #FFFFFF;" text=" ">
+                           <graphic>
+                              <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@img/Dictionary.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <tooltip>
+                              <Tooltip fx:id="dictionaryTooltip" text="Dictionary" />
+                           </tooltip>
+                        </JFXButton>
+                        <JFXButton fx:id="translateBtn" layoutX="10.0" layoutY="10.0" onAction="#switchToTranslate" prefHeight="80.0" prefWidth="80.0" style="-fx-background-color: #FFFFFF;" text=" ">
+                           <graphic>
+                              <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@img/translate.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <tooltip>
+                              <Tooltip fx:id="translateTooltip" text="Translate" />
+                           </tooltip>
+                        </JFXButton>
+                        <JFXButton fx:id="flashcardBtn" layoutX="10.0" layoutY="120.0" onAction="#switchToFlashcard" prefHeight="80.0" prefWidth="80.0" style="-fx-background-color: #FFFFFF;" text=" ">
+                           <graphic>
+                              <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@img/flashcard.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <tooltip>
+                              <Tooltip fx:id="flashcardTooltip" text="Flashcard" />
+                           </tooltip>
+                        </JFXButton>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="container" layoutX="80.0" layoutY="26.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 0px 30px 30px 0px;" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="30.0" />
+   </children>
+</AnchorPane>
