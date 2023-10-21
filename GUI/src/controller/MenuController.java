@@ -6,6 +6,9 @@ import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXButton;
 
+import CML.Java.main_dict.Word;
+import CML.Java.main_dict.WordsManager;
+import CML.Java.main_dict.dbToManager;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -22,34 +25,17 @@ import javafx.util.Duration;
 
 public class MenuController implements Initializable{
     @FXML
-    private Button Menu;
-
-    @FXML
-    private Button MenuBack;
-
-    @FXML
     private AnchorPane container;
 
     @FXML
-    private JFXButton dictionaryBtn;
+    private Button dictionaryBtn;
 
     @FXML
-    private Tooltip dictionaryTooltip;
+    private Button flashcardBtn;
 
     @FXML
-    private JFXButton flashcardBtn;
+    private Button translateBtn;
 
-    @FXML
-    private Tooltip flashcardTooltip;
-
-    @FXML
-    private AnchorPane slider;
-
-    @FXML
-    private JFXButton translateBtn;
-
-    @FXML
-    private Tooltip translateTooltip;
     private void setNode(Node node) {
         container.getChildren().clear();
         container.getChildren().add(node);
@@ -70,7 +56,7 @@ public class MenuController implements Initializable{
      * @throws IOException
      */
     public void switchToDictionary(ActionEvent e) throws IOException {
-        showComponent("../views/Dictionary.fxml");
+        showComponent("../views/DictionaryUI.fxml");
     }
 
     /**
@@ -91,41 +77,8 @@ public class MenuController implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        showComponent("../views/Dictionary.fxml");
-        dictionaryTooltip.setShowDelay(Duration.seconds(0.5));
-        translateTooltip.setShowDelay(Duration.seconds(0.5));
-        flashcardTooltip.setShowDelay(Duration.seconds(0.5));
-
-        slider.setTranslateY(1000);
-        Menu.setOnMouseClicked(event -> {
-            TranslateTransition slide = new TranslateTransition();
-            slide.setDuration(Duration.seconds(0.5));
-            slide.setNode(slider);
-
-            slide.setToY(0);
-            slide.play();
-
-            //slider.setTranslateY(1000);
-            slide.setOnFinished((ActionEvent e) -> {
-                Menu.setVisible(false);
-                MenuBack.setVisible(true);
-            });
-        });
-
-        MenuBack.setOnMouseClicked(event -> {
-            TranslateTransition slide = new TranslateTransition();
-            slide.setDuration(Duration.seconds(0.5));
-            slide.setNode(slider);
-
-            slide.setToY(1000);
-            slide.play();
-
-            slider.setTranslateY(0);
-            slide.setOnFinished((ActionEvent e) -> {
-                Menu.setVisible(true);
-                MenuBack.setVisible(false);
-            });
-        });
+        showComponent("../views/DictionaryUI.fxml");
+        dbToManager.scan("/GUI/src/CML/DB/Eng.csv");
     }
 }
 

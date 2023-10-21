@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "dbToManager",
+            "request": "launch",
+            "mainClass": "CML.Java.main_dict.dbToManager",
+            "projectName": "GUI_3a3497c4"
+        },
+        {
+            "type": "java",
             "name": "Main",
             "request": "launch",
             "mainClass": "Main",

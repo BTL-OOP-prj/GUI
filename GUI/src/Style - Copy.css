@@ -1,0 +1,10 @@
+.root{
+    -fx-background-color: #FFF4E9;
+}
+@font-face {
+    font-family: "navbarFont";
+    src: url(Luckybones-Bold.ttf);
+}
+.lable{
+    -fx-font-size: 21;
+}
