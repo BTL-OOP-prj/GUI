@@ -70,7 +70,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="40.0" layoutY="94.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="94.0">
+            <ImageView fx:id="soundBtn" fitHeight="30.0" fitWidth="30.0" layoutX="40.0" layoutY="94.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="94.0">
                <image>
                   <Image url="@img/icons8-sound-96.png" />
                </image>

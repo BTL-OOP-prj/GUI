@@ -64,7 +64,7 @@ public class MenuController implements Initializable{
      * @throws IOException
      */
     public void switchToTranslate(ActionEvent e) throws IOException {
-        showComponent("../views/Translate.fxml");
+        showComponent("../views/TranslateUI.fxml");
     }
 
     /**
@@ -72,7 +72,7 @@ public class MenuController implements Initializable{
      * @throws IOException
      */
     public void switchToFlashcard(ActionEvent e) throws IOException {
-        showComponent("../views/Flashcard.fxml");
+        showComponent("../views/FlashcardUI.fxml");
     }
 
     @Override

@@ -14,8 +14,23 @@
             <Image url="@img/icons8-glossary-100.png" />
          </image>
       </ImageView>
-      <Label layoutX="94.0" layoutY="31.0" styleClass="lable" text="Label" />
-      <Button fx:id="dictionaryBtn" layoutX="317.0" layoutY="10.0" mnemonicParsing="false" onAction="#switchToDictionary" prefHeight="40.0" prefWidth="169.0" style="-fx-background-radius: 30px; -fx-background-color: transparent;" text="Dictionary" AnchorPane.leftAnchor="300.0" AnchorPane.topAnchor="10.0">
+      <ImageView fitHeight="52.0" fitWidth="183.0" layoutX="298.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true" styleClass="navbarItem">
+         <image>
+            <Image url="@img/navbarhover.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="52.0" fitWidth="183.0" layoutX="498.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true" styleClass="navbarItem" AnchorPane.topAnchor="24.0">
+         <image>
+            <Image url="@img/navbarhover.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="52.0" fitWidth="183.0" layoutX="696.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true" styleClass="navbarItem" AnchorPane.topAnchor="24.0">
+         <image>
+            <Image url="@img/navbarhover.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="94.0" layoutY="31.0" styleClass="lable" text="hehe app" AnchorPane.topAnchor="25.0" />
+      <Button fx:id="dictionaryBtn" layoutX="280.0" layoutY="8.0" mnemonicParsing="false" onAction="#switchToDictionary" prefHeight="40.0" style="-fx-background-radius: 30px;" styleClass="navbar" text="Dictionary" AnchorPane.leftAnchor="280.0">
          <graphic>
             <ImageView fitHeight="90.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -27,7 +42,7 @@
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="translateBtn" layoutX="511.0" layoutY="11.0" mnemonicParsing="false" onAction="#switchToTranslate" style="-fx-background-radius: 30px; -fx-background-color: transparent;" text="Translate" AnchorPane.leftAnchor="500.0" AnchorPane.topAnchor="10.0">
+      <Button fx:id="translateBtn" layoutX="481.0" layoutY="8.0" mnemonicParsing="false" onAction="#switchToTranslate" style="-fx-background-radius: 30px;" styleClass="navbar" text="Translate" AnchorPane.leftAnchor="481.0" AnchorPane.topAnchor="8.0">
          <graphic>
             <ImageView fitHeight="90.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -39,7 +54,7 @@
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="flashcardBtn" layoutX="691.0" layoutY="11.0" mnemonicParsing="false" onAction="#switchToFlashcard" style="-fx-background-radius: 30px; -fx-background-color: transparent;" text="Flashcard" AnchorPane.leftAnchor="690.0" AnchorPane.topAnchor="10.0">
+      <Button fx:id="flashcardBtn" layoutX="678.0" layoutY="8.0" mnemonicParsing="false" onAction="#switchToFlashcard" style="-fx-background-radius: 30px;" styleClass="navbar" text="Flashcard" AnchorPane.leftAnchor="678.0" AnchorPane.topAnchor="8.0">
          <graphic>
             <ImageView fitHeight="90.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -51,6 +66,6 @@
             <Font size="18.0" />
          </font>
       </Button>
-      <AnchorPane fx:id="container" layoutX="4.0" layoutY="100.0" prefHeight="500.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+      <AnchorPane fx:id="container" layoutX="4.0" layoutY="100.0" prefHeight="500.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0" />
    </children>
 </AnchorPane>

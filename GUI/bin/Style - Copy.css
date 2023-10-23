@@ -1,10 +1,24 @@
+@font-face {
+    src: url("../src/views/Luckybones-Bold.ttf") format('ttf'),
+    url("../src/views/Luckybones-Bold.ttf2") format('ttf2');
+    font-family: 'Luckybones';
+}
+
 .root{
     -fx-background-color: #FFF4E9;
 }
-@font-face {
-    font-family: "navbarFont";
-    src: url(Luckybones-Bold.ttf);
-}
 .lable{
-    -fx-font-size: 21;
+    -fx-font-size: 30; 
+    -fx-font-family: 'Luckybones', sans-serif;
 }
+.navbar{
+    -fx-font-size: 25; 
+    -fx-font-family: 'Luckybones', sans-serif;
+    -fx-background-color: transparent;
+}
+/* .navbarItem{
+    visibility: false;
+} */
+/* .navbar:hover .navbarItem{
+    visibility: true;
+} */
