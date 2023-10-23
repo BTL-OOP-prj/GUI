@@ -15,9 +15,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 
 public class DictionaryController implements Initializable{
     
@@ -45,6 +47,9 @@ public class DictionaryController implements Initializable{
     @FXML
     private Label typeLable;
 
+    @FXML
+    private ScrollPane examplePane;
+
     public void displayContent(Word word) {
         contentLable.setText(word.getContent());
     }
@@ -54,15 +59,25 @@ public class DictionaryController implements Initializable{
     }
 
     public void displayPronunciation(Word word) {
+        pronunciationLable.setWrapText(true);
         pronunciationLable.setText(word.getPronunciation());
     }
 
     public void displayMeaning(Word word) {
+        meaningLable.setMaxHeight(500);
+        meaningLable.setWrapText(true);
+        System.out.println("before: " + meaningLable.getHeight());
         meaningLable.setText(word.getMeaning());
+        System.out.println("after: " + meaningLable.getHeight());
     }
 
     public void displayExample(Word word) {
-        pronunciationLable.setText(word.getExample());
+        AnchorPane.setTopAnchor(examplePane, meaningLable.getLayoutY() + meaningLable.getHeight());
+        System.out.println(meaningLable.getLayoutY() + " - " +  meaningLable.getHeight());
+        System.out.println(examplePane.getLayoutY());
+        exampleLable.setText(word.getExample());
+        exampleLable.setWrapText(true);
+        exampleLable.setMaxHeight(10000);
     }
 
     /**
