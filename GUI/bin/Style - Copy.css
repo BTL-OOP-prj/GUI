@@ -11,14 +11,14 @@
     -fx-font-size: 30; 
     -fx-font-family: 'Luckybones', sans-serif;
 }
+.navbarItem{
+    visibility: false;
+}
 .navbar{
     -fx-font-size: 25; 
     -fx-font-family: 'Luckybones', sans-serif;
     -fx-background-color: transparent;
 }
-/* .navbarItem{
-    visibility: false;
-} */
-/* .navbar:hover .navbarItem{
+.navbar:hover .navbarItem{
     visibility: true;
-} */
+}

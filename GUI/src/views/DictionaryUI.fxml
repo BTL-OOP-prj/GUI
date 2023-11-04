@@ -12,7 +12,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="900.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DictionaryController">
    <children>
-      <AnchorPane layoutX="139.0" layoutY="14.0" prefHeight="75.0" prefWidth="350.0" AnchorPane.leftAnchor="138.0" AnchorPane.rightAnchor="410.0" AnchorPane.topAnchor="15.0">
+      <AnchorPane layoutX="34.0" prefHeight="75.0" prefWidth="350.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="501.0" AnchorPane.topAnchor="0.0">
          <children>
             <ImageView fitHeight="90.0" fitWidth="350.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -63,37 +63,52 @@
                   <Font size="20.0" />
                </font>
             </Label>
+            <Label layoutX="104.0" layoutY="26.0" text="History">
+               <font>
+                  <Font name="System Bold" size="25.0" />
+               </font>
+            </Label>
+            <Label layoutX="104.0" layoutY="55.0" text="Lịch sử tìm kiếm">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
       <AnchorPane layoutY="115.0" prefHeight="390.0" prefWidth="644.0" style="-fx-background-color: white; -fx-background-radius: 30px;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="110.0">
          <children>
-            <Line endX="560.0" layoutX="41.5" layoutY="136.5" stroke="#ffcc40" strokeWidth="3.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="135.0" />
-            <Label fx:id="contentLable" layoutX="48.0" layoutY="33.0" text="ab" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="20.0">
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="456.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="-17.0">
+               <image>
+                  <Image url="@img/bear1.png" />
+               </image>
+            </ImageView>
+            <Line endX="492.0" layoutX="41.5" layoutY="136.5" stroke="#ffcc40" strokeWidth="3.0" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="110.0" />
+            <Label fx:id="contentLable" layoutX="48.0" layoutY="33.0" text="ab" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="10.0">
                <font>
                   <Font name="System Bold" size="30.0" />
                </font>
             </Label>
-            <Label fx:id="typeLable" layoutX="40.0" layoutY="58.0" text="noun" AnchorPane.topAnchor="65.0">
+            <Label fx:id="typeLable" layoutX="40.0" layoutY="58.0" text="noun" AnchorPane.topAnchor="50.0">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <ImageView fx:id="soundBtn" fitHeight="30.0" fitWidth="30.0" layoutX="40.0" layoutY="94.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="94.0">
+            <ImageView fx:id="soundBtn" fitHeight="30.0" fitWidth="30.0" layoutX="40.0" layoutY="94.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="75.0">
                <image>
                   <Image url="@img/icons8-sound-96.png" />
                </image>
             </ImageView>
-            <Label fx:id="pronunciationLable" layoutX="75.0" layoutY="95.0" text="/ab/">
+            <Label fx:id="pronunciationLable" layoutX="75.0" layoutY="95.0" text="/ab/" AnchorPane.topAnchor="75.0">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label fx:id="meaningLable" alignment="TOP_LEFT" layoutX="38.0" layoutY="143.0" prefWidth="550.0" text="meaning" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="145.0">
+            <Label fx:id="meaningLable" alignment="TOP_LEFT" layoutX="38.0" layoutY="143.0" prefWidth="550.0" text="meaning" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="120.0">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <ScrollPane fx:id="examplePane" layoutX="40.0" layoutY="210.0" prefHeight="170.0" prefWidth="550.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0">
+            <ScrollPane fx:id="examplePane" layoutX="40.0" layoutY="210.0" prefHeight="212.0" prefWidth="564.0" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0">
                <content>
                   <Label fx:id="exampleLable" alignment="TOP_LEFT" prefWidth="548.0" text="- example">
                      <font>
@@ -104,5 +119,32 @@
             </ScrollPane>
          </children>
       </AnchorPane>
+      <Button layoutX="461.0" layoutY="13.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text=" " AnchorPane.rightAnchor="380.0" AnchorPane.topAnchor="16.0">
+         <graphic>
+            <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/add.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button layoutX="535.0" layoutY="34.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text=" " AnchorPane.rightAnchor="320.0" AnchorPane.topAnchor="15.0">
+         <graphic>
+            <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/delete.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button mnemonicParsing="false" style="-fx-background-color: transparent;" text=" " AnchorPane.rightAnchor="260.0" AnchorPane.topAnchor="16.0">
+         <graphic>
+            <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/Edit.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
    </children>
 </AnchorPane>
