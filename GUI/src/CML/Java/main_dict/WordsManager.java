@@ -1,6 +1,8 @@
 package CML.Java.main_dict;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 import CML.Java.main_dict.Word;
 
@@ -118,7 +120,8 @@ public class WordsManager {
     /**
      * Suggestions.
      */
-    public static void suggestions(String prefix) {
+    public static List<Word> suggestions(String prefix) {
+        List<Word> list = new ArrayList<Word>();
         prefix = prefix.toLowerCase();
         Queue<TrieNode> Nodes = new LinkedList<>();
         Nodes.add(root);
@@ -130,13 +133,14 @@ public class WordsManager {
                 int index = c - 'a';
                 if (cur.getChildren()[index] == null) {
                     System.out.println("No matching word!");
-                    return;
+                    return list;
                 } else {
                     Nodes.add(cur.getChildren()[index]);
                 }
             } else {
                 if (cur.isWord()) {
-                    System.out.println(cur.getWord().getContent());
+                    //System.out.println(cur.getWord().getContent());
+                    list.add(cur.getWord());
                 }
                 for (int i = 0; i < 26; i++) {
                     if (cur.getChildren()[i] != null) {
@@ -146,6 +150,7 @@ public class WordsManager {
             }
         }
         System.out.println("End of Suggestions!");
+        return list;
     }
 
     /**

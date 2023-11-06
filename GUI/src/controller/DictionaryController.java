@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXButton;
@@ -9,28 +10,26 @@ import com.jfoenix.controls.JFXButton;
 import CML.Java.main_dict.Word;
 import CML.Java.main_dict.WordsManager;
 import CML.Java.main_dict.dbToManager;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
+import javafx.scene.control.ListView;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
 public class DictionaryController implements Initializable{
     
     @FXML
     private Label contentLable;
-
-    @FXML
-    private Label exampleLable;
-
-    @FXML
-    private Label meaningLable;
 
     @FXML
     private Label pronunciationLable;
@@ -42,13 +41,24 @@ public class DictionaryController implements Initializable{
     private Button searchBtn;
 
     @FXML
+    private Button saveBtn;
+
+    @FXML
+    private Button editBtn;
+
+    @FXML
     private ImageView soundBtn;
 
     @FXML
     private Label typeLable;
 
     @FXML
-    private ScrollPane examplePane;
+    private TextArea explainArea;
+
+    @FXML
+    private ListView<String> suggestion;
+
+    ObservableList<String> list = FXCollections.observableArrayList();
 
     public void displayContent(Word word) {
         contentLable.setText(word.getContent());
@@ -59,25 +69,44 @@ public class DictionaryController implements Initializable{
     }
 
     public void displayPronunciation(Word word) {
-        pronunciationLable.setWrapText(true);
         pronunciationLable.setText(word.getPronunciation());
     }
 
-    public void displayMeaning(Word word) {
-        meaningLable.setMaxHeight(500);
-        meaningLable.setWrapText(true);
-        System.out.println("before: " + meaningLable.getHeight());
-        meaningLable.setText(word.getMeaning());
-        System.out.println("after: " + meaningLable.getHeight());
+    public void displayExplain(Word word) {
+        String explain = '\b' + word.getMeaning() + '\n' + word.getExample();
+        explainArea.setText(explain);
     }
 
-    public void displayExample(Word word) {
-        AnchorPane.setTopAnchor(examplePane, meaningLable.getLayoutY() + meaningLable.getHeight());
-        System.out.println(meaningLable.getLayoutY() + " - " +  meaningLable.getHeight());
-        System.out.println(examplePane.getLayoutY());
-        exampleLable.setText(word.getExample());
-        exampleLable.setWrapText(true);
-        exampleLable.setMaxHeight(10000);
+    private void displayWord(Word word) {
+        displayContent(word);
+        displayType(word);
+        displayPronunciation(word);
+        displayExplain(word);
+    }
+
+    private void handleOnKeyTyped() {
+        list.clear();
+        String searchWord = searchBox.getText();
+        List<Word> recWordList = WordsManager.suggestions(searchWord);;
+
+
+        for (Word word : recWordList) {
+            list.add(word.getContent());
+        }
+//        for (int i = 0; i <= NUM_OF_WORDS; i++) {
+//            if (i < recWordList.size()) {
+//                list.add(recWordList.get(i).getWordTarget());
+//            }
+//        }
+
+        if (list.isEmpty()) {
+            //notAvailable.setVisible(true);
+            suggestion.setItems(list);
+        } else {
+            //notAvailable.setVisible(false);
+            suggestion.setItems(list);
+
+        }
     }
 
     /**
@@ -85,21 +114,52 @@ public class DictionaryController implements Initializable{
      * @throws IOException
      */
     @FXML
-    public void HandleSearchBtn(ActionEvent e) throws IOException {
-        String target = searchBox.getText();
+    private void HandleSearchBtn(ActionEvent e) throws IOException {
+        String target = "";
+        if(!searchBox.getText().isEmpty()) {
+            target = searchBox.getText();
+        }
         System.out.println(target);
         Word word = WordsManager.searchWord(target);
         System.out.println(word.getMeaning());
-        displayContent(word);
-        displayType(word);
-        displayPronunciation(word);
-        displayMeaning(word);
-        displayExample(word);
+        displayWord(word);
+    }
+
+    @FXML
+    private void HandleMouseClick(MouseEvent e) {
+        String selectedWord = suggestion.getSelectionModel().getSelectedItem();
+        Word word = WordsManager.searchWord(selectedWord);
+        displayWord(word);
+//        System.out.println(word.getWordTarget() + " " + word.isFavorite());
+    }
+
+    @FXML
+    private void HandleClickEditBtn(ActionEvent e) {
+        explainArea.setEditable(true);
+        editBtn.setVisible(false);
+        saveBtn.setVisible(true);
+    }
+
+    @FXML
+    void HandleClickSaveBtn(ActionEvent event) {
+        explainArea.setEditable(false);
+        saveBtn.setVisible(false);
+        editBtn.setVisible(true);
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        WordsManager.suggestions("al");
+        explainArea.setEditable(false);
+        saveBtn.setVisible(false);
+        handleOnKeyTyped();
+        searchBox.setOnKeyReleased(e -> {
+            if (searchBox.getText().isEmpty()) {
+                //setListDefault();
+            } else {
+                handleOnKeyTyped();
+            }
+        });
+        //WordsManager.suggestions("al");
         System.out.println("hehe");
     }
 }
