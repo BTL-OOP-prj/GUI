@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import com.sun.speech.freetts.Voice;
+import com.sun.speech.freetts.VoiceManager;
 
 import main.java.Core.main_dict.Word;
 import main.java.Core.main_dict.WordsManager;
@@ -25,6 +27,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
 public class DictionaryController implements Initializable{
+    private static final String VOICE_KEY = "freetts.voices";
+    private static final String VOICE_VALUE = "com.sun.speech.freetts.en.us.cmu_us_kal.KevinVoiceDirectory";
+    private static final String VOICE_NAME = "kevin16";
     
     @FXML
     private Label contentLable;
@@ -56,6 +61,8 @@ public class DictionaryController implements Initializable{
     @FXML
     private ListView<String> suggestion;
 
+    private String target = "";
+
     ObservableList<String> list = FXCollections.observableArrayList();
 
     public void displayContent(Word word) {
@@ -71,7 +78,7 @@ public class DictionaryController implements Initializable{
     }
 
     public void displayExplain(Word word) {
-        String explain = '\b' + word.getMeaning() + '\n' + word.getExample();
+        String explain = word.getMeaning() + '\n' + '\n' + word.getExample();
         explainArea.setText(explain);
     }
 
@@ -113,7 +120,6 @@ public class DictionaryController implements Initializable{
      */
     @FXML
     private void HandleSearchBtn(ActionEvent e) throws IOException {
-        String target = "";
         if(!searchBox.getText().isEmpty()) {
             target = searchBox.getText();
         }
@@ -124,9 +130,10 @@ public class DictionaryController implements Initializable{
     }
 
     @FXML
-    private void HandleMouseClick(MouseEvent e) {
+    private void HandleMouseClickListView(MouseEvent e) {
         String selectedWord = suggestion.getSelectionModel().getSelectedItem();
         Word word = WordsManager.searchWord(selectedWord);
+        target = word.getContent();
         displayWord(word);
 //        System.out.println(word.getWordTarget() + " " + word.isFavorite());
     }
@@ -136,6 +143,19 @@ public class DictionaryController implements Initializable{
         explainArea.setEditable(true);
         editBtn.setVisible(false);
         saveBtn.setVisible(true);
+    }
+
+    @FXML
+    void HandleMouseClickSoundBtn(MouseEvent event) {
+        System.setProperty(VOICE_KEY, VOICE_VALUE);
+        Voice voice = VoiceManager.getInstance().getVoice(VOICE_NAME);
+        if (voice != null) {
+            voice.allocate();
+            voice.speak(target);
+            voice.deallocate();
+        } else {
+            throw new IllegalStateException("Cannot find voice: " + VOICE_NAME);
+        }
     }
 
     @FXML
@@ -157,7 +177,7 @@ public class DictionaryController implements Initializable{
                 handleOnKeyTyped();
             }
         });
-        WordsManager.suggestions("al");
-        System.out.println("hehe");
+        // WordsManager.suggestions("al");
+        // System.out.println("hehe");
     }
 }

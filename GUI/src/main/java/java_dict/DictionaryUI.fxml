@@ -36,7 +36,7 @@
             </ImageView>
             <AnchorPane layoutX="26.0" layoutY="100.0" prefHeight="370.0" prefWidth="195.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="35.0">
                <children>
-                  <ListView fx:id="suggestion" layoutX="18.0" layoutY="-1.0" onMouseClicked="#HandleMouseClick" prefHeight="374.0" prefWidth="159.0" style="-fx-background-color: transparent; -fx-font-size: 18px;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <ListView fx:id="suggestion" layoutX="18.0" layoutY="-1.0" onMouseClicked="#HandleMouseClickListView" prefHeight="374.0" prefWidth="159.0" style="-fx-background-color: transparent; -fx-font-size: 18px;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                </children>
             </AnchorPane>
             <Label fx:id="contentLable1" layoutX="82.0" layoutY="12.0" prefHeight="75.0" prefWidth="144.0" text="Recommended Words" wrapText="true" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="15.0">
@@ -69,7 +69,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <ImageView fx:id="soundBtn" fitHeight="30.0" fitWidth="30.0" layoutX="40.0" layoutY="94.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="75.0">
+            <ImageView fx:id="soundBtn" fitHeight="30.0" fitWidth="30.0" layoutX="40.0" layoutY="94.0" onMouseClicked="#HandleMouseClickSoundBtn" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="75.0">
                <image>
                   <Image url="@img/icons8-sound-96.png" />
                </image>
