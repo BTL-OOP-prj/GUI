@@ -9,8 +9,9 @@
             "name": "Main",
             "request": "launch",
             "mainClass": "main.java.Main",
-            "projectName": "GUI_3a3497c4",
+            "projectName": "GUI_506544ac",
             "vmArgs": "--module-path \"./lib/javafx-sdk-21/lib\" --add-modules javafx.controls,javafx.fxml"
+
         },
         {
             "type": "java",

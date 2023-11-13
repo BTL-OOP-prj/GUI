@@ -14,45 +14,41 @@ public class dbToManager {
     public static String[] split(String str, String delimiter) {
         String[] result = new String[5];
         int index = str.indexOf(delimiter);
-        //check content
+        // check content
         if (index == 0) {
             result[0] = "";
             str = str.substring(index + 1);
-        }
-        else {
+        } else {
             result[0] = str.substring(0, index);
             str = str.substring(index + 1);
         }
-        //check type
+        // check type
         index = str.indexOf(delimiter);
         if (index == 0) {
             result[1] = "";
             str = str.substring(index + 1);
-        }
-        else {
+        } else {
             result[1] = str.substring(0, index);
             str = str.substring(index + 1);
         }
-        //check meaning
+        // check meaning
         index = str.indexOf(delimiter);
         if (index == 0) {
             result[2] = "";
-        }
-        else {
+        } else {
             result[2] = str.substring(0, index);
             str = str.substring(index + 1);
         }
-        //check pronunciation
+        // check pronunciation
         index = str.indexOf(delimiter);
         if (index == 0) {
             result[3] = "";
             str = str.substring(index + 1);
-        }
-        else {
+        } else {
             result[3] = str.substring(0, index);
             str = str.substring(index + 1);
         }
-        //check example
+        // check example
         result[4] = str;
         return result;
     }
@@ -61,10 +57,9 @@ public class dbToManager {
      * Get the path of the database.
      */
     public static String pathGetter(String raw_path) {
-            File pathGetter = new File("");
-            String path = pathGetter.getAbsolutePath();
-            path = path.substring(0, path.length() - 4);
-            path = path + raw_path;
+        File pathGetter = new File("");
+        String path = pathGetter.getAbsolutePath();
+        path = path + raw_path;
         return path;
     }
 
@@ -76,7 +71,7 @@ public class dbToManager {
             path = pathGetter(path);
             System.out.println(path);
             File DBF = new File(path);
-            Scanner sc = new Scanner(DBF);
+            Scanner sc = new Scanner(DBF, "UTF-8");
             if (!sc.hasNextLine()) {
                 System.out.println("File is empty!");
                 return;
@@ -90,20 +85,20 @@ public class dbToManager {
                 String Pronunciation = curWord[3];
                 String Example = curWord[4];
                 if (Content.indexOf(" ") != -1 || Content.indexOf("-") != -1 || Content.indexOf("'") != -1 ||
-                    Content.indexOf(".") != -1 || Content.indexOf(",") != -1 || Content.indexOf("?") != -1 ||
-                    Content.indexOf("!") != -1 || Content.indexOf(":") != -1 || Content.indexOf(";") != -1 ||
-                    Content.indexOf("\"") != -1 || Content.indexOf("(") != -1 || Content.indexOf(")") != -1 ||
-                    Content.indexOf("[") != -1 || Content.indexOf("]") != -1 || Content.indexOf("{") != -1 ||
-                    Content.indexOf("}") != -1 || Content.indexOf("/") != -1 || Content.indexOf("\\") != -1 ||
-                    Content.indexOf("<") != -1 || Content.indexOf(">") != -1 || Content.indexOf("|") != -1 ||
-                    Content.indexOf("*") != -1 || Content.indexOf("&") != -1 || Content.indexOf("^") != -1 ||
-                    Content.indexOf("%") != -1 || Content.indexOf("$") != -1 || Content.indexOf("#") != -1 ||
-                    Content.indexOf("@") != -1 || Content.indexOf("~") != -1 || Content.indexOf("`") != -1 ||
-                    Content.indexOf("+") != -1 || Content.indexOf("=") != -1 || Content.indexOf("-") != -1 ||
-                    Content.indexOf("_") != -1 || Content.indexOf("0") != -1 || Content.indexOf("1") != -1 ||
-                    Content.indexOf("2") != -1 || Content.indexOf("3") != -1 || Content.indexOf("4") != -1 ||
-                    Content.indexOf("5") != -1 || Content.indexOf("6") != -1 || Content.indexOf("7") != -1 ||
-                    Content.indexOf("8") != -1 || Content.indexOf("9") != -1) {
+                        Content.indexOf(".") != -1 || Content.indexOf(",") != -1 || Content.indexOf("?") != -1 ||
+                        Content.indexOf("!") != -1 || Content.indexOf(":") != -1 || Content.indexOf(";") != -1 ||
+                        Content.indexOf("\"") != -1 || Content.indexOf("(") != -1 || Content.indexOf(")") != -1 ||
+                        Content.indexOf("[") != -1 || Content.indexOf("]") != -1 || Content.indexOf("{") != -1 ||
+                        Content.indexOf("}") != -1 || Content.indexOf("/") != -1 || Content.indexOf("\\") != -1 ||
+                        Content.indexOf("<") != -1 || Content.indexOf(">") != -1 || Content.indexOf("|") != -1 ||
+                        Content.indexOf("*") != -1 || Content.indexOf("&") != -1 || Content.indexOf("^") != -1 ||
+                        Content.indexOf("%") != -1 || Content.indexOf("$") != -1 || Content.indexOf("#") != -1 ||
+                        Content.indexOf("@") != -1 || Content.indexOf("~") != -1 || Content.indexOf("`") != -1 ||
+                        Content.indexOf("+") != -1 || Content.indexOf("=") != -1 || Content.indexOf("-") != -1 ||
+                        Content.indexOf("_") != -1 || Content.indexOf("0") != -1 || Content.indexOf("1") != -1 ||
+                        Content.indexOf("2") != -1 || Content.indexOf("3") != -1 || Content.indexOf("4") != -1 ||
+                        Content.indexOf("5") != -1 || Content.indexOf("6") != -1 || Content.indexOf("7") != -1 ||
+                        Content.indexOf("8") != -1 || Content.indexOf("9") != -1) {
                     continue;
                 }
                 Word word = new Word(Content, Type, Meaning, Pronunciation, Example);
@@ -111,11 +106,18 @@ public class dbToManager {
                 // System.out.println(word.toString());
             }
             sc.close();
-        }
-        catch (FileNotFoundException e) {
+        } catch (FileNotFoundException e) {
             System.out.println("File not found!");
             // e.printStackTrace();
         }
-        
+
     }
+
+    // /**
+    // * main.
+    // */
+    // public static void main(String[] args) {
+    // System.out.println(pathGetter("test.txt"));
+    // }
+
 }

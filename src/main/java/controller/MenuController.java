@@ -71,7 +71,7 @@ public class MenuController implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         //System.out.println(getClass().getResource("src/main/resources/Eng.txt"));
-        dbToManager.scan("/GUI/src/main/resources/Eng.txt");
+        dbToManager.scan("/src/main/resources/Eng.txt");
         System.out.println(getClass().getResource("../resources/assets/DictionaryUI.fxml"));
         showComponent("../../resources/assets/DictionaryUI.fxml");
     }
