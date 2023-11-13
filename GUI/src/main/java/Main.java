@@ -9,8 +9,10 @@ public class Main extends Application{
     @Override
     public void start(Stage primaryStage) throws Exception {
         try{
-            Parent root = FXMLLoader.load(getClass().getResource("./java_dict/AppUI.fxml"));
+            System.out.println(getClass().getResource("../resources/assets/AppUI.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("../resources/assets/AppUI.fxml"));
             //Parent root = FXMLLoader.load(getClass().getResource("App.fxml"));
+            System.out.println();
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
             primaryStage.show();

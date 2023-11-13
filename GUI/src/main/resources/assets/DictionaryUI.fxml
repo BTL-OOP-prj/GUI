@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="900.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane layoutX="34.0" prefHeight="75.0" prefWidth="350.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="501.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ImageView fitHeight="90.0" fitWidth="350.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/Thêm%20tiêu%20đề%20phụ.png" />
+               </image>
+            </ImageView>
+            <TextField fx:id="searchBox" layoutX="60.0" layoutY="21.0" prefHeight="35.0" prefWidth="271.0" style="-fx-background-color: transparent;">
+               <font>
+                  <Font size="20.0" />
+               </font></TextField>
+            <Button fx:id="searchBtn" layoutX="20.0" layoutY="23.0" mnemonicParsing="false" onAction="#HandleSearchBtn" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: transparent;" text="     " />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="700.0" prefHeight="500.0" prefWidth="252.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ImageView fitHeight="500.0" fitWidth="260.0" layoutX="2.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="-0.37608947753903976">
+               <image>
+                  <Image url="@img/FilterPane.png" />
+               </image>
+            </ImageView>
+            <AnchorPane layoutX="26.0" layoutY="100.0" prefHeight="370.0" prefWidth="195.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="35.0">
+               <children>
+                  <ListView fx:id="suggestion" layoutX="18.0" layoutY="-1.0" onMouseClicked="#HandleMouseClickListView" prefHeight="374.0" prefWidth="159.0" style="-fx-background-color: transparent; -fx-font-size: 18px;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+               </children>
+            </AnchorPane>
+            <Label fx:id="contentLable1" layoutX="82.0" layoutY="12.0" prefHeight="75.0" prefWidth="144.0" text="Recommended Words" wrapText="true" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="15.0">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="33.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="25.0">
+               <image>
+                  <Image url="@img/filter.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutY="115.0" prefHeight="390.0" prefWidth="638.0" style="-fx-background-color: white; -fx-background-radius: 30px;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="110.0">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="456.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="-17.0">
+               <image>
+                  <Image url="@img/bear1.png" />
+               </image>
+            </ImageView>
+            <Line endX="492.0" layoutX="41.5" layoutY="136.5" stroke="#ffcc40" strokeWidth="3.0" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="110.0" />
+            <Label fx:id="contentLable" layoutX="48.0" layoutY="33.0" text="ab" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="10.0">
+               <font>
+                  <Font name="System Bold" size="30.0" />
+               </font>
+            </Label>
+            <Label fx:id="typeLable" layoutX="40.0" layoutY="58.0" text="noun" wrapText="true" AnchorPane.topAnchor="50.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="soundBtn" fitHeight="30.0" fitWidth="30.0" layoutX="40.0" layoutY="94.0" onMouseClicked="#HandleMouseClickSoundBtn" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="75.0">
+               <image>
+                  <Image url="@img/icons8-sound-96.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="pronunciationLable" layoutX="75.0" layoutY="95.0" text="/ab/" wrapText="true" AnchorPane.topAnchor="75.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TextArea fx:id="explainArea" layoutX="40.0" layoutY="130.0" maxHeight="10000.0" maxWidth="550.0" prefHeight="237.0" prefWidth="550.0" style="-fx-background-color: transparent; -fx-font-size: 18px;" wrapText="true" />
+         </children>
+      </AnchorPane>
+      <Button layoutX="461.0" layoutY="13.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text=" " AnchorPane.rightAnchor="380.0" AnchorPane.topAnchor="16.0">
+         <graphic>
+            <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/add.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button layoutX="535.0" layoutY="34.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text=" " AnchorPane.rightAnchor="320.0" AnchorPane.topAnchor="15.0">
+         <graphic>
+            <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/delete.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="saveBtn" mnemonicParsing="false" onAction="#HandleClickSaveBtn" style="-fx-background-color: transparent;" text=" " AnchorPane.rightAnchor="260.0" AnchorPane.topAnchor="16.0">
+         <graphic>
+            <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/Save.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="editBtn" layoutX="576.0" layoutY="26.0" mnemonicParsing="false" onAction="#HandleClickEditBtn" style="-fx-background-color: transparent;" text=" " AnchorPane.rightAnchor="260.0" AnchorPane.topAnchor="16.0">
+         <graphic>
+            <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/Edit.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+   </children>
+</AnchorPane>

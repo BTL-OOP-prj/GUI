@@ -36,6 +36,7 @@ public class MenuController implements Initializable{
     @FXML
     private void showComponent(String path) {
         try {
+            System.out.println(getClass().getResource(path));
             AnchorPane component = FXMLLoader.load(getClass().getResource(path));
             setNode(component);
         } catch (IOException e) {
@@ -48,7 +49,7 @@ public class MenuController implements Initializable{
      * @throws IOException
      */
     public void switchToDictionary(ActionEvent e) throws IOException {
-        showComponent("../java_dict/DictionaryUI.fxml");
+        showComponent("../resources/assets/DictionaryUI.fxml");
     }
 
     /**
@@ -56,7 +57,7 @@ public class MenuController implements Initializable{
      * @throws IOException
      */
     public void switchToTranslate(ActionEvent e) throws IOException {
-        showComponent("../java_dict/TranslateUI.fxml");
+        showComponent("../resources/assets/TranslateUI.fxml");
     }
 
     /**
@@ -64,13 +65,15 @@ public class MenuController implements Initializable{
      * @throws IOException
      */
     public void switchToFlashcard(ActionEvent e) throws IOException {
-        showComponent("../java_dict/FlashcardUI.fxml");
+        showComponent("../resources/assets/FlashcardUI.fxml");
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        dbToManager.scan("/GUI/src/main/java/Core/DB/Eng.csv");
-        showComponent("../java_dict/DictionaryUI.fxml");
+        //System.out.println(getClass().getResource("src/main/resources/Eng.txt"));
+        //dbToManager.scan("/GUI/src/main/resources/Eng.txt");
+        System.out.println(getClass().getResource("./resources/assets/DictionaryUI.fxml"));
+        showComponent("./resources/assets/DictionaryUI.fxml");
     }
 }
 

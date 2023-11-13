@@ -63,7 +63,7 @@ public class SwitchScene implements Initializable{
      * @throws IOException
      */
     public void switchToDictionary(ActionEvent e) throws IOException {
-        showComponent("../views/Dictionary.fxml");
+        showComponent("../resources/assets/Dictionary.fxml");
     }
 
     /**
@@ -71,7 +71,7 @@ public class SwitchScene implements Initializable{
      * @throws IOException
      */
     public void switchToTranslate(ActionEvent e) throws IOException {
-        showComponent("../views/Translate.fxml");
+        showComponent("../resources/assets/Translate.fxml");
     }
 
     /**
@@ -79,12 +79,12 @@ public class SwitchScene implements Initializable{
      * @throws IOException
      */
     public void switchToFlashcard(ActionEvent e) throws IOException {
-        showComponent("../views/Flashcard.fxml");
+        showComponent("../resources/assets/Flashcard.fxml");
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        showComponent("../views/Dictionary.fxml");
+        showComponent("../../resources/assets/Dictionary.fxml");
         dictionaryTooltip.setShowDelay(Duration.seconds(0.5));
         translateTooltip.setShowDelay(Duration.seconds(0.5));
         flashcardTooltip.setShowDelay(Duration.seconds(0.5));
