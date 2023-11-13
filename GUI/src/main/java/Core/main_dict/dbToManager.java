@@ -83,7 +83,7 @@ public class dbToManager {
             }
             while (sc.hasNextLine()) {
                 String curLine = sc.nextLine();
-                String[] curWord = split(curLine, ",");
+                String[] curWord = split(curLine, "~");
                 String Content = curWord[0];
                 String Type = curWord[1];
                 String Meaning = curWord[2];

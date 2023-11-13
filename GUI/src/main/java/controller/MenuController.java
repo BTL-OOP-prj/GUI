@@ -49,7 +49,7 @@ public class MenuController implements Initializable{
      * @throws IOException
      */
     public void switchToDictionary(ActionEvent e) throws IOException {
-        showComponent("../resources/assets/DictionaryUI.fxml");
+        showComponent("../../resources/assets/DictionaryUI.fxml");
     }
 
     /**
@@ -57,7 +57,7 @@ public class MenuController implements Initializable{
      * @throws IOException
      */
     public void switchToTranslate(ActionEvent e) throws IOException {
-        showComponent("../resources/assets/TranslateUI.fxml");
+        showComponent("../../resources/assets/TranslateUI.fxml");
     }
 
     /**
@@ -65,15 +65,15 @@ public class MenuController implements Initializable{
      * @throws IOException
      */
     public void switchToFlashcard(ActionEvent e) throws IOException {
-        showComponent("../resources/assets/FlashcardUI.fxml");
+        showComponent("../../resources/assets/FlashcardUI.fxml");
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         //System.out.println(getClass().getResource("src/main/resources/Eng.txt"));
-        //dbToManager.scan("/GUI/src/main/resources/Eng.txt");
-        System.out.println(getClass().getResource("./resources/assets/DictionaryUI.fxml"));
-        showComponent("./resources/assets/DictionaryUI.fxml");
+        dbToManager.scan("/GUI/src/main/resources/Eng.txt");
+        System.out.println(getClass().getResource("../resources/assets/DictionaryUI.fxml"));
+        showComponent("../../resources/assets/DictionaryUI.fxml");
     }
 }
 
