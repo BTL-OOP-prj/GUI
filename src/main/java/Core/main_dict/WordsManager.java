@@ -64,15 +64,16 @@ public class WordsManager {
     public static TrieNode root = new TrieNode();
 
     /**
-     * normalizeWord.
+     * insertWord.
      */
     static Word normalizeWord(Word word) {
-        Word newWord = new Word(word.getContent(), word.getType(), word.getMeaning(), word.getPronunciation(), word.getExample());
+        Word newWord = new Word(word.getContent(), word.getType(), word.getMeaning(), word.getPronunciation(),
+                word.getExample());
         newWord.setContent(newWord.getContent().toLowerCase());
-        newWord.setType(newWord.getType().toLowerCase());
-        newWord.setMeaning(newWord.getMeaning().toLowerCase());
-        newWord.setPronunciation(newWord.getPronunciation().toLowerCase());
-        newWord.setExample(newWord.getExample().toLowerCase());
+        newWord.setType(newWord.getType().toLowerCase().replace("@", ""));
+        newWord.setMeaning(newWord.getMeaning().toLowerCase().replace("@", ""));
+        newWord.setPronunciation(newWord.getPronunciation().toLowerCase().replace("@", ""));
+        newWord.setExample(newWord.getExample().toLowerCase().replace("@", ""));
         return newWord;
     }
 
@@ -80,7 +81,11 @@ public class WordsManager {
      * insertWord.
      */
     public static void insertWord(Word raw_word) {
+        if (raw_word == null) {
+            return;
+        }
         Word word = normalizeWord(raw_word);
+
         TrieNode current = root;
         for (int i = 0; i < word.getContent().length(); i++) {
             char c = word.getContent().charAt(i);
@@ -101,6 +106,9 @@ public class WordsManager {
      * @return Word or null
      */
     public static Word searchWord(String raw_Content) {
+        if (raw_Content == null) {
+            return null;
+        }
         String Content = raw_Content.toLowerCase();
         TrieNode current = root;
         for (int i = 0; i < Content.length(); i++) {
@@ -118,6 +126,14 @@ public class WordsManager {
     }
 
     /**
+     * suggestions.
+     * default prefix = ""
+     */
+    public static List<Word> suggestions() {
+        return suggestions("");
+    }
+
+    /**
      * Suggestions.
      */
     public static List<Word> suggestions(String prefix) {
@@ -132,14 +148,14 @@ public class WordsManager {
                 char c = prefix.charAt(pIndex++);
                 int index = c - 'a';
                 if (cur.getChildren()[index] == null) {
-                    System.out.println("No matching word!");
+                    System.err.println("No matching word!");
                     return list;
                 } else {
                     Nodes.add(cur.getChildren()[index]);
                 }
             } else {
                 if (cur.isWord()) {
-                    //System.out.println(cur.getWord().getContent());
+                    // System.out.println(cur.getWord().getContent());
                     list.add(cur.getWord());
                 }
                 for (int i = 0; i < 26; i++) {
@@ -149,8 +165,15 @@ public class WordsManager {
                 }
             }
         }
-        System.out.println("End of Suggestions!");
+        System.err.println("End of Suggestions!");
         return list;
+    }
+
+    /**
+     * getAllWords.
+     */
+    public static List<Word> getAllWords() {
+        return suggestions();
     }
 
     /**
@@ -196,12 +219,14 @@ public class WordsManager {
      * main.
      */
     // public static void main(String[] args) {
-    //     Word word = new Word("Hello", "Noun", "Xin chao", "Hello World");
-    //     WordsManager.insertWord(word);
-    //     Word word2 = searchWord("Hello");
-    //     WordsManager.insertWord(new Word("alllo", "Noun", "Xin chao", "Hello World"));
-    //     WordsManager.insertWord(new Word("bllo", "Noun", "Xin chao", "Hello World"));
-    //     WordsManager.insertWord(new Word("hellllo", "Noun", "Xin chao", "Hello World"));
-    //     WordsManager.suggestions("Hel");
+    // Word word = new Word("Hello", "Noun", "Xin chao", "Hello World");
+    // WordsManager.insertWord(word);
+    // Word word2 = searchWord("Hello");
+    // WordsManager.insertWord(new Word("alllo", "Noun", "Xin chao", "Hello
+    // World"));
+    // WordsManager.insertWord(new Word("bllo", "Noun", "Xin chao", "Hello World"));
+    // WordsManager.insertWord(new Word("hellllo", "Noun", "Xin chao", "Hello
+    // World"));
+    // WordsManager.suggestions("Hel");
     // }
 }
