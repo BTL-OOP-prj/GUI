@@ -15,7 +15,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 
-public class MenuController implements Initializable{
+public class MenuController implements Initializable {
     @FXML
     private AnchorPane container;
 
@@ -32,7 +32,7 @@ public class MenuController implements Initializable{
         container.getChildren().clear();
         container.getChildren().add(node);
     }
-    
+
     @FXML
     private void showComponent(String path) {
         try {
@@ -69,10 +69,9 @@ public class MenuController implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        //System.out.println(getClass().getResource("src/main/resources/Eng.txt"));
+        // System.out.println(getClass().getResource("src/main/resources/Eng.txt"));
         dbToManager.scan("/src/main/resources/Eng.txt");
-        System.out.println(getClass().getResource("../resources/assets/DictionaryUI.fxml"));
+        // System.out.println(getClass().getResource("../resources/assets/DictionaryUI.fxml"));
         showComponent("../../resources/assets/DictionaryUI.fxml");
     }
 }
-

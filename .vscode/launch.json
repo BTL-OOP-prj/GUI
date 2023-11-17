@@ -6,12 +6,26 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Test",
+            "request": "launch",
+            "mainClass": "main.java.Test",
+            "projectName": "GUI_de55d190"
+        },
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "main.java.Main",
+            "projectName": "GUI_de55d190",
+            "vmArgs": "--module-path \"./lib/javafx-sdk-21/lib\" --add-modules javafx.controls,javafx.fxml"
+        },
+        {
+            "type": "java",
             "name": "Main",
             "request": "launch",
             "mainClass": "main.java.Main",
             "projectName": "GUI_506544ac",
             "vmArgs": "--module-path \"./lib/javafx-sdk-21/lib\" --add-modules javafx.controls,javafx.fxml"
-
         },
         {
             "type": "java",

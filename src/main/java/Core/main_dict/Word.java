@@ -92,7 +92,39 @@ public class Word {
      * toString.
      */
     public String toString() {
-        return ("[" + Content + ", " + Type + ", " + Pronunciation + ", " + Meaning + ", " + Example + "]");
+        return ("Words:\n" + Content + "\nType:\n" + Type + "\nMeaning:\n"
+                + Meaning + "\nPronunciation:\n" + Pronunciation + "\n"
+                + Example + "\n");
     }
-    
+
+    /**
+     * toExport.
+     * format to export to txt file
+     */
+    public String toExport() {
+        String[] curMeaning = Meaning.split("\n");
+        String[] curExample = Example.split("\n");
+        String Meaning = "";
+        String Example = "";
+        for (int i = 1; i < curMeaning.length; i++) {
+            if (curMeaning[i].length() > 0) {
+                Meaning += "\'" + curMeaning[i].substring(2) + (i < curMeaning.length - 1 ? "\', " : "\'");
+            }
+        }
+        for (int i = 1; i < curExample.length; i++) {
+            if (curExample[i].length() > 0) {
+                Example += "\'" + curExample[i].substring(2) + (i < curExample.length - 1 ? "\', " : "\'");
+            }
+        }
+
+        Meaning = "[" + Meaning + "]";
+        Example = "[" + Example + "]";
+        if (Type.equals("")) {
+            Type = "@";
+        }
+        if (Pronunciation.equals("")) {
+            Pronunciation = "@";
+        }
+        return (Content + "~" + Type + "~" + Meaning + "~" + Pronunciation + "~" + Example);
+    }
 }

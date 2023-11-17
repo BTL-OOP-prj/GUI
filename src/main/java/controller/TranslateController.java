@@ -68,7 +68,7 @@ public class TranslateController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        System.out.println(writePane.getText().isEmpty());
+        //System.out.println(writePane.getText().isEmpty());
         if(!writePane.getText().isEmpty()) {
             System.out.println(writePane.getText());
         }
