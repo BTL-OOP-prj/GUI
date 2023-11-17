@@ -7,10 +7,10 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.controller.TranslateController">
    <children>
-      <TextArea prefHeight="320.0" prefWidth="360.0" style="-fx-background-color: white; -fx-background-radius: 30px;" AnchorPane.leftAnchor="42.0" AnchorPane.topAnchor="123.0" />
-      <Label prefHeight="320.0" prefWidth="360.0" style="-fx-background-radius: 30px; -fx-background-color: white;" AnchorPane.rightAnchor="42.0" AnchorPane.topAnchor="123.0" />
+      <TextArea fx:id="writePane" prefHeight="320.0" prefWidth="360.0" style="-fx-background-color: white; -fx-background-radius: 30px;" AnchorPane.leftAnchor="42.0" AnchorPane.topAnchor="123.0" />
+      <Label fx:id="resultPane" prefHeight="320.0" prefWidth="360.0" style="-fx-background-radius: 30px; -fx-background-color: white;" AnchorPane.rightAnchor="42.0" AnchorPane.topAnchor="123.0" />
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="122.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="30.0">
          <image>
             <Image url="@img/tag.png" />
@@ -31,7 +31,7 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <ImageView fx:id="soundBtn2" fitHeight="169.0" fitWidth="98.0" layoutY="332.7535064697265" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
+      <ImageView fitHeight="169.0" fitWidth="98.0" layoutY="332.7535064697265" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
          <image>
             <Image url="@img/bear2.png" />
          </image>
@@ -41,19 +41,24 @@
             <Image url="@img/icons8-chevron-right-96.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="soundBtn" fitHeight="50.0" fitWidth="50.0" layoutX="53.0" layoutY="393.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="62.0" AnchorPane.leftAnchor="53.0">
+      <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="53.0" layoutY="393.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="62.0" AnchorPane.leftAnchor="53.0">
          <image>
             <Image url="@img/icons8-sound-96.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="soundBtn1" fitHeight="50.0" fitWidth="50.0" layoutX="53.0" layoutY="392.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="62.0" AnchorPane.leftAnchor="510.0">
+      <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="53.0" layoutY="392.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="62.0" AnchorPane.leftAnchor="510.0">
          <image>
             <Image url="@img/icons8-sound-96.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="soundBtn21" fitHeight="169.0" fitWidth="180.0" layoutX="682.0" layoutY="274.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="169.0" fitWidth="180.0" layoutX="682.0" layoutY="274.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@img/bear3.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="570.0" layoutY="398.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="62.0" AnchorPane.leftAnchor="103.0">
+         <image>
+            <Image url="@img/microphone.png" />
          </image>
       </ImageView>
    </children>

@@ -36,7 +36,6 @@ public class MenuController implements Initializable{
     @FXML
     private void showComponent(String path) {
         try {
-            System.out.println(getClass().getResource(path));
             AnchorPane component = FXMLLoader.load(getClass().getResource(path));
             setNode(component);
         } catch (IOException e) {
