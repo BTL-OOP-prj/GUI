@@ -28,7 +28,7 @@ public class AddWordController implements Initializable {
     private TextField pronunciation;
 
     @FXML
-    private ChoiceBox type;
+    private ChoiceBox<String> type;
 
     @FXML
     void HandleAddBtn(ActionEvent event) {

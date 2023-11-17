@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "APITranslator",
+            "request": "launch",
+            "mainClass": "main.java.Core.API.APITranslator",
+            "projectName": "GUI_506544ac"
+        },
+        {
+            "type": "java",
             "name": "Test",
             "request": "launch",
             "mainClass": "main.java.Test",
