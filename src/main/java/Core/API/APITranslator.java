@@ -31,12 +31,4 @@ public class APITranslator {
         }
         return result;
     }
-
-    public static void main(String[] args) throws IOException {
-        Scanner sc = new Scanner(System.in);
-        String text = sc.nextLine();
-        System.out.println(text);
-        //Translated text: Hallo Welt!
-        System.out.println("Translated text: " + translate("en", "vi", text));
-    }
 }
