@@ -19,6 +19,10 @@ import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
 
 public class TranslateController implements Initializable {
+    private static final String VOICE_KEY = "freetts.voices";
+    private static final String VOICE_VALUE = "com.sun.speech.freetts.en.us.cmu_us_kal.KevinVoiceDirectory";
+    private static final String VOICE_NAME = "kevin16";
+
     private String[] language = {"en", "vi", "ko", "ja", "ru"};
     private String[] languageChoices = {"Tiếng Anh", "Tiếng Việt", "Tiếng Hàn", 
                                     "Tiếng Nhật", "Tiếng Nga"};
@@ -34,6 +38,12 @@ public class TranslateController implements Initializable {
 
     @FXML
     private TextArea writePane;
+
+    @FXML
+    private ImageView soundBtn1;
+
+    @FXML
+    private ImageView soundBtn2;
 
     @FXML
     void HandleClickTranslateBtn(ActionEvent event) throws IOException {
@@ -62,5 +72,30 @@ public class TranslateController implements Initializable {
         languageTo.getItems().addAll(languageChoices);
         languageFrom.setValue("Tiếng Anh");
         languageTo.setValue("Tiếng Việt");
+
+        soundBtn1.setOnMouseClicked(e -> {
+            System.setProperty(VOICE_KEY, VOICE_VALUE);
+            Voice voice = VoiceManager.getInstance().getVoice(VOICE_NAME);
+            if (voice != null) {
+                voice.allocate();
+                voice.speak(writePane.getText());
+                voice.deallocate();
+            } else {
+                throw new IllegalStateException("Cannot find voice: " + VOICE_NAME);
+            }
+        }); 
+        
+        soundBtn2.setOnMouseClicked(e -> {
+            System.setProperty(VOICE_KEY, VOICE_VALUE);
+            Voice voice = VoiceManager.getInstance().getVoice(VOICE_NAME);
+            if (voice != null) {
+                voice.allocate();
+                voice.speak(resultPane.getText());
+                voice.deallocate();
+            } else {
+                throw new IllegalStateException("Cannot find voice: " + VOICE_NAME);
+            }
+        }); 
+        
     }
 }

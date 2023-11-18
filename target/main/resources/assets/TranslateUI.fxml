@@ -44,12 +44,12 @@
             <Image url="@img/bear2.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="53.0" layoutY="393.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="62.0" AnchorPane.leftAnchor="53.0">
+      <ImageView fx:id="soundBtn1" fitHeight="50.0" fitWidth="50.0" layoutX="53.0" layoutY="393.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="62.0" AnchorPane.leftAnchor="53.0">
          <image>
             <Image url="@img/icons8-sound-96.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="53.0" layoutY="392.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="62.0" AnchorPane.leftAnchor="510.0">
+      <ImageView fx:id="soundBtn2" fitHeight="50.0" fitWidth="50.0" layoutX="53.0" layoutY="392.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="62.0" AnchorPane.leftAnchor="510.0">
          <image>
             <Image url="@img/icons8-sound-96.png" />
          </image>

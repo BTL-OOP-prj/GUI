@@ -25,9 +25,10 @@ public class APITranslator {
                 response.append(inputLine);
             }
             inputReader.close();
+            con.disconnect();
             result = response.toString();
         } catch (Exception e) {
-            System.out.println("Content is empty");
+            System.out.println(e);
         }
         return result;
     }
