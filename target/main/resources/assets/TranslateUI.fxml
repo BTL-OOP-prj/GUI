@@ -44,28 +44,40 @@
             <Image url="@img/bear2.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="soundBtn1" fitHeight="50.0" fitWidth="50.0" layoutX="53.0" layoutY="393.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="62.0" AnchorPane.leftAnchor="53.0">
-         <image>
-            <Image url="@img/icons8-sound-96.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="soundBtn2" fitHeight="50.0" fitWidth="50.0" layoutX="53.0" layoutY="392.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="62.0" AnchorPane.leftAnchor="510.0">
-         <image>
-            <Image url="@img/icons8-sound-96.png" />
-         </image>
-      </ImageView>
       <ImageView fitHeight="169.0" fitWidth="180.0" layoutX="682.0" layoutY="274.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@img/bear3.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="570.0" layoutY="398.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="62.0" AnchorPane.leftAnchor="103.0">
-         <image>
-            <Image url="@img/microphone.png" />
-         </image>
-      </ImageView>
       <ChoiceBox fx:id="languageFrom" layoutX="139.0" layoutY="33.0" prefHeight="45.0" prefWidth="165.0" style="-fx-background-color: transparent; -fx-font-size: 18;" />
       <ChoiceBox fx:id="languageTo" layoutX="595.0" layoutY="33.0" prefHeight="45.0" prefWidth="165.0" style="-fx-background-color: transparent; -fx-font-size: 18;" />
+      <Button mnemonicParsing="false" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="58.0" AnchorPane.leftAnchor="100.0">
+         <graphic>
+            <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/microphone.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button mnemonicParsing="false" onAction="#handleSoundBtn2" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="58.0" AnchorPane.rightAnchor="330.0">
+         <graphic>
+            <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/icons8-sound-96.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button layoutX="42.0" layoutY="386.0" mnemonicParsing="false" onAction="#handleSoundBtn1" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="58.0">
+         <graphic>
+            <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/icons8-sound-96.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
       <Button layoutX="409.0" layoutY="230.0" mnemonicParsing="false" onAction="#HandleClickTranslateBtn" style="-fx-background-color: transparent;" text=" ">
          <graphic>
             <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">

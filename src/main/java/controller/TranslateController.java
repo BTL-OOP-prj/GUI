@@ -1,12 +1,12 @@
 package main.java.controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import com.sun.glass.events.MouseEvent;
-import com.sun.net.httpserver.Authenticator.Result;
+import main.java.Core.API.VoiceRSS;
 import com.sun.speech.freetts.Voice;
 import com.sun.speech.freetts.VoiceManager;
 import main.java.Core.API.APITranslator;
@@ -17,14 +17,15 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
 public class TranslateController implements Initializable {
     private static final String VOICE_KEY = "freetts.voices";
     private static final String VOICE_VALUE = "com.sun.speech.freetts.en.us.cmu_us_kal.KevinVoiceDirectory";
     private static final String VOICE_NAME = "kevin16";
 
-    private String[] language = {"en", "vi", "ko", "ja", "ru"};
-    private String[] languageChoices = {"Tiếng Anh", "Tiếng Việt", "Tiếng Hàn", 
+    private static final String[] languageChoices = {"Tiếng Anh", "Tiếng Việt", "Tiếng Hàn", 
                                     "Tiếng Nhật", "Tiếng Nga"};
 
     @FXML
@@ -49,21 +50,38 @@ public class TranslateController implements Initializable {
     void HandleClickTranslateBtn(ActionEvent event) throws IOException {
         String text = writePane.getText();
         String langFrom = languageFrom.getValue();
-        for (int i = 0; i < languageChoices.length; i++) {
-            if(languageChoices[i].equals(langFrom)) {
-                langFrom = language[i];
-                break;
-            }
-        }
         String langTo = languageTo.getValue();
-        for (int i = 0; i < languageChoices.length; i++) {
-            if(languageChoices[i].equals(langTo)) {
-                langTo = language[i];
-                break;
-            }
-        }
         System.out.println(langFrom + ' ' + langTo + ' ' + text);
         resultPane.setText(APITranslator.translate(langFrom, langTo, text));
+    }
+
+    private void playHitSound() {
+        String path = "src/main/resources/Audio/output.mp3";
+        Media media;
+        MediaPlayer mediaPlayer;
+        //String path = getClass().getResource("output.mp3").getPath();
+        media = new Media(new File(path).toURI().toString());
+        mediaPlayer = new MediaPlayer(media);
+        mediaPlayer.setCycleCount(1);
+        mediaPlayer.play();
+    }
+
+    @FXML
+    void handleSoundBtn1(ActionEvent event) throws Exception {
+        String text = writePane.getText();
+        String language = languageFrom.getValue();
+        VoiceRSS.audioFilePath(text, language);
+        playHitSound();
+        System.out.println("end1");
+    }
+
+    @FXML
+    void handleSoundBtn2(ActionEvent event) throws Exception {
+        String text = resultPane.getText();
+        String language = languageTo.getValue();
+        VoiceRSS.audioFilePath(text, language);
+        playHitSound();
+        System.out.println("end2");
     }
 
     @Override
@@ -71,31 +89,6 @@ public class TranslateController implements Initializable {
         languageFrom.getItems().addAll(languageChoices);
         languageTo.getItems().addAll(languageChoices);
         languageFrom.setValue("Tiếng Anh");
-        languageTo.setValue("Tiếng Việt");
-
-        soundBtn1.setOnMouseClicked(e -> {
-            System.setProperty(VOICE_KEY, VOICE_VALUE);
-            Voice voice = VoiceManager.getInstance().getVoice(VOICE_NAME);
-            if (voice != null) {
-                voice.allocate();
-                voice.speak(writePane.getText());
-                voice.deallocate();
-            } else {
-                throw new IllegalStateException("Cannot find voice: " + VOICE_NAME);
-            }
-        }); 
-        
-        soundBtn2.setOnMouseClicked(e -> {
-            System.setProperty(VOICE_KEY, VOICE_VALUE);
-            Voice voice = VoiceManager.getInstance().getVoice(VOICE_NAME);
-            if (voice != null) {
-                voice.allocate();
-                voice.speak(resultPane.getText());
-                voice.deallocate();
-            } else {
-                throw new IllegalStateException("Cannot find voice: " + VOICE_NAME);
-            }
-        }); 
-        
+        languageTo.setValue("Tiếng Việt");        
     }
 }
