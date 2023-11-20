@@ -33,21 +33,15 @@ public class dbToManager {
      * turn the string into a list-like string.
      */
     private static String ListyString(String rawText) {
-        if (rawText.length() < 2) {
-            return "";
-        }
-        String res = rawText.substring(1, rawText.length() - 1);
-        String[] resArr = res.split(", ");
-        res = "";
+        String[] resArr = rawText.split("|");
+        String res = "";
         for (int i = 0; i < resArr.length; i++) {
-            if (resArr[i].length() < 2)
-                continue;
-            String tmp = resArr[i];
-            while (tmp.startsWith("\"") || tmp.startsWith("\'")) {
-                tmp = tmp.substring(1);
+            if (i > 2) { // takes only 3 lines
+                break;
             }
-            while (tmp.endsWith("\"") || tmp.endsWith("\'")) {
-                tmp = tmp.substring(0, tmp.length() - 1);
+            String tmp = resArr[i];
+            if (tmp.indexOf("+") != -1) {
+                tmp = tmp.replace("+", ":");
             }
             char c = tmp.charAt(0);
             if ('a' <= c && c <= 'z') {
@@ -72,43 +66,30 @@ public class dbToManager {
             Scanner sc = new Scanner(DBF, "UTF-8");
             if (!sc.hasNextLine()) {
                 System.err.println("File is empty!");
+                sc.close();
                 return;
             }
             while (sc.hasNextLine()) {
                 String curLine = sc.nextLine();
-                String[] curWord = split(curLine, "~");
+                String[] curWord = curLine.split("\t");
                 String Content = curWord[0];
+                String Pronunciation = curWord[3];
                 String Type = curWord[1];
                 String Meaning = curWord[2];
-                String Pronunciation = curWord[3];
                 String Example = curWord[4];
-                if (Content.indexOf(" ") != -1 || Content.indexOf("-") != -1 || Content.indexOf("'") != -1
-                        || Content.indexOf(".") != -1 || Content.indexOf(",") != -1 || Content.indexOf("?") != -1
-                        || Content.indexOf("!") != -1 || Content.indexOf(":") != -1 || Content.indexOf(";") != -1
-                        || Content.indexOf("\"") != -1 || Content.indexOf("(") != -1 || Content.indexOf(")") != -1
-                        || Content.indexOf("[") != -1 || Content.indexOf("]") != -1 || Content.indexOf("{") != -1
-                        || Content.indexOf("}") != -1 || Content.indexOf("/") != -1 || Content.indexOf("\\") != -1
-                        || Content.indexOf("<") != -1 || Content.indexOf(">") != -1 || Content.indexOf("|") != -1
-                        || Content.indexOf("*") != -1 || Content.indexOf("&") != -1 || Content.indexOf("^") != -1
-                        || Content.indexOf("%") != -1 || Content.indexOf("$") != -1 || Content.indexOf("#") != -1
-                        || Content.indexOf("`") != -1 || Content.indexOf("+") != -1 || Content.indexOf("=") != -1
-                        || Content.indexOf("-") != -1 || Content.indexOf("_") != -1 || Content.indexOf("0") != -1
-                        || Content.indexOf("1") != -1 || Content.indexOf("2") != -1 || Content.indexOf("3") != -1
-                        || Content.indexOf("4") != -1 || Content.indexOf("5") != -1 || Content.indexOf("6") != -1
-                        || Content.indexOf("7") != -1 || Content.indexOf("8") != -1 || Content.indexOf("9") != -1) {
-                    continue;
-                }
                 Meaning = ListyString(Meaning);
                 Example = ListyString(Example);
                 if (Example != null && Example.length() > 0) {
                     Example = "Examples:\n" + Example;
                 }
-                if (Type.equals("@")) {
+                if (Type.equals("NULL")) {
                     Type = "";
                 }
-                if (Pronunciation.equals("@")) {
+                if (Pronunciation.equals("NULL")) {
                     Pronunciation = "";
                 }
+                // System.err.println(Content + "\n" + Type + "\n" + Meaning + "\n" +
+                // Pronunciation + "\n" + Example);
                 Word word = new Word(Content, Type, Meaning, Pronunciation, Example);
                 WordsManager.insertWord(word);
             }

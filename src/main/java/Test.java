@@ -20,7 +20,7 @@ public class Test {
      */
     public static void dbmod() {
         try {
-            String path = dbToManager.pathGetter("/src/main/resources/Eng.txt");
+            String path = dbToManager.pathGetter("/src/main/resources/EV.txt");
             System.err.println(path);
             File DBFile = new File(path);
             System.err.println(DBFile.exists() ? "file found" : "file not found");
@@ -29,11 +29,8 @@ public class Test {
                     new OutputStreamWriter(new FileOutputStream("output.txt"), StandardCharsets.UTF_8));
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
-                while (line.indexOf("~~") != -1) {
-                    line = line.replace("~~", "~@~");
-                }
-                if (line.endsWith("~")) {
-                    line = line + "@";
+                while (line.indexOf(" | ") != -1) {
+                    line = line.replace(" | ", "|");
                 }
                 writer.write(line);
                 writer.newLine();
@@ -65,9 +62,9 @@ public class Test {
     }
 
     public static void main(String[] args) {
-        // dbmod();
-        dbToManager.scan("/src/main/resources/Eng.txt");
-        dbToManager.export("/src/main/resources/Eng.txt");
-        suggestionsTest();
+        dbmod();
+        dbToManager.scan("/src/main/resources/EV.txt");
+        // dbToManager.export("/src/main/resources/EV.txt");
+        // suggestionsTest();
     }
 }
