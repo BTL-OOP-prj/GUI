@@ -36,7 +36,6 @@ public class MenuController implements Initializable {
     @FXML
     private void showComponent(String path) {
         try {
-            System.out.println(getClass().getResource(path));
             AnchorPane component = FXMLLoader.load(getClass().getResource(path));
             setNode(component);
         } catch (IOException e) {
@@ -70,8 +69,8 @@ public class MenuController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        // System.out.println(getClass().getResource("src/main/resources/EV.txt"));
-        dbToManager.scan("/src/main/resources/EV.txt");
+        // System.out.println(getClass().getResource("src/main/resources/Eng.txt"));
+        dbToManager.scan("/src/main/resources/Eng.txt");
         // System.out.println(getClass().getResource("../resources/assets/DictionaryUI.fxml"));
         showComponent("../../resources/assets/DictionaryUI.fxml");
     }

@@ -3,6 +3,7 @@ package main.java.controller;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import com.sun.speech.freetts.Voice;
 import com.sun.speech.freetts.VoiceManager;
@@ -14,22 +15,34 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Dialog;
+import javafx.scene.control.DialogPane;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.Node;
+
 
 public class DictionaryController implements Initializable {
     private static final String VOICE_KEY = "freetts.voices";
     private static final String VOICE_VALUE = "com.sun.speech.freetts.en.us.cmu_us_kal.KevinVoiceDirectory";
     private static final String VOICE_NAME = "kevin16";
+    
+    @FXML
+    private AnchorPane addPane;
 
     @FXML
     private Label contentLable;
@@ -42,6 +55,9 @@ public class DictionaryController implements Initializable {
 
     @FXML
     private Button searchBtn;
+
+    @FXML
+    private Button addBtn;
 
     @FXML
     private Button saveBtn;
@@ -92,23 +108,23 @@ public class DictionaryController implements Initializable {
     private void handleOnKeyTyped() {
         list.clear();
         String searchWord = searchBox.getText();
-        List<Word> recWordList = WordsManager.suggestions(searchWord);
-        ;
+        List<Word> recWordList = WordsManager.suggestions(searchWord);;
+
 
         for (Word word : recWordList) {
             list.add(word.getContent());
         }
-        // for (int i = 0; i <= NUM_OF_WORDS; i++) {
-        // if (i < recWordList.size()) {
-        // list.add(recWordList.get(i).getWordTarget());
-        // }
-        // }
+//        for (int i = 0; i <= NUM_OF_WORDS; i++) {
+//            if (i < recWordList.size()) {
+//                list.add(recWordList.get(i).getWordTarget());
+//            }
+//        }
 
         if (list.isEmpty()) {
-            // notAvailable.setVisible(true);
+            //notAvailable.setVisible(true);
             suggestion.setItems(list);
         } else {
-            // notAvailable.setVisible(false);
+            //notAvailable.setVisible(false);
             suggestion.setItems(list);
 
         }
@@ -120,15 +136,12 @@ public class DictionaryController implements Initializable {
      */
     @FXML
     private void HandleSearchBtn(ActionEvent e) throws IOException {
-        if (searchBox.getText().isEmpty()) {
-            target = "a";
-        }
-        if (!searchBox.getText().isEmpty()) {
+        if(!searchBox.getText().isEmpty()) {
             target = searchBox.getText();
         }
-        // System.out.println(target);
+        System.out.println(target);
         Word word = WordsManager.searchWord(target);
-        // System.out.println(word.getMeaning());
+        System.out.println(word.getMeaning());
         displayWord(word);
     }
 
@@ -138,7 +151,7 @@ public class DictionaryController implements Initializable {
         Word word = WordsManager.searchWord(selectedWord);
         target = word.getContent();
         displayWord(word);
-        // System.out.println(word.getWordTarget() + " " + word.isFavorite());
+//        System.out.println(word.getWordTarget() + " " + word.isFavorite());
     }
 
     @FXML
@@ -154,6 +167,7 @@ public class DictionaryController implements Initializable {
         Voice voice = VoiceManager.getInstance().getVoice(VOICE_NAME);
         if (voice != null) {
             voice.allocate();
+            voice.setRate(100);  
             voice.speak(target);
             voice.deallocate();
         } else {
@@ -168,6 +182,28 @@ public class DictionaryController implements Initializable {
         editBtn.setVisible(true);
     }
 
+    @FXML
+    void HandleClickAddBtn(ActionEvent event) {
+        // Dialog<Word> dialog = new Dialog<Word>();
+        // Optional<Word> result = dialog.showAndWait();
+        // if(result.isPresent()) {
+        //     Word word = result.get();
+        //     System.out.println(word.toString());
+        // }
+        try {
+            AnchorPane component = FXMLLoader.load(getClass().getResource("../../resources/assets/test.fxml"));
+            addPane.getChildren().add(component);
+            Button closeBtn = new Button(" X ");
+            addPane.getChildren().add(closeBtn);
+            closeBtn.setOnMouseClicked(e -> {
+                addPane.getChildren().clear();
+                // addPane.setVisible(false);
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         explainArea.setEditable(false);
@@ -175,7 +211,7 @@ public class DictionaryController implements Initializable {
         handleOnKeyTyped();
         searchBox.setOnKeyReleased(e -> {
             if (searchBox.getText().isEmpty()) {
-                // setListDefault();
+                //setListDefault();
             } else {
                 handleOnKeyTyped();
             }

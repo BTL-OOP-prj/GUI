@@ -6,6 +6,22 @@
     "configurations": [
         {
             "type": "java",
+            "name": "VoiceRSS",
+            "request": "launch",
+            "mainClass": "main.java.Core.API.VoiceRSS",
+            "projectName": "GUI_637fed46",
+            "vmArgs": "--module-path \"./lib/javafx-sdk-21/lib\" --add-modules javafx.controls,javafx.fxml,javafx.media"
+        },
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "main.java.Main",
+            "projectName": "GUI_637fed46",
+            "vmArgs": "--module-path \"./lib/javafx-sdk-21/lib\" --add-modules javafx.controls,javafx.fxml,javafx.media",
+        },
+        {
+            "type": "java",
             "name": "Test",
             "request": "launch",
             "mainClass": "main.java.Test",
@@ -17,7 +33,7 @@
             "request": "launch",
             "mainClass": "main.java.Main",
             "projectName": "GUI_de55d190",
-            "vmArgs": "--module-path \"./lib/javafx-sdk-21/lib\" --add-modules javafx.controls,javafx.fxml"
+            "vmArgs": "--module-path \"./lib/javafx-sdk-21/lib\" --add-modules javafx.controls,javafx.fxml,javafx.media"
         },
         {
             "type": "java",
@@ -25,7 +41,7 @@
             "request": "launch",
             "mainClass": "main.java.Main",
             "projectName": "GUI_506544ac",
-            "vmArgs": "--module-path \"./lib/javafx-sdk-21/lib\" --add-modules javafx.controls,javafx.fxml"
+            "vmArgs": "--module-path \"./lib/javafx-sdk-21/lib\" --add-modules javafx.controls,javafx.fxml,javafx.media"
         },
         {
             "type": "java",
@@ -39,7 +55,7 @@
             "request": "launch",
             "mainClass": "App",
             "projectName": "GUI_3a3497c4",
-            "vmArgs": "--module-path \"./lib/javafx-sdk-21/lib\" --add-modules javafx.controls,javafx.fxml"
+            "vmArgs": "--module-path \"./lib/javafx-sdk-21/lib\" --add-modules javafx.controls,javafx.fxml,javafx.media"
         }
     ]
 }
