@@ -11,7 +11,7 @@ public class WordsManager {
      * TrieNode.
      */
     public static class TrieNode {
-        private TrieNode[] children = new TrieNode[26];
+        private TrieNode[] children = new TrieNode[51];
         private boolean isWord;
         private Word word;
 
@@ -20,7 +20,7 @@ public class WordsManager {
          */
         public TrieNode() {
             isWord = false;
-            for (int i = 0; i < 26; i++) {
+            for (int i = 0; i < 51; i++) {
                 children[i] = null;
             }
         }
@@ -77,6 +77,59 @@ public class WordsManager {
         return newWord;
     }
 
+    static int getIndex(char c) {
+        int index = c - 'a';
+        if (c == ' ') {
+            index = 26;
+        }
+        if (c == '-') {
+            index = 27;
+        }
+        if (c == '.') {
+            index = 28;
+        }
+        if (c == '(') {
+            index = 29;
+        }
+        if (c == ')') {
+            index = 30;
+        }
+        if (c == '=') {
+            index = 31;
+        }
+        if (c == ',') {
+            index = 32;
+        }
+        if (c == '\\') {
+            index = 33;
+        }
+        if (c == '<') {
+            index = 34;
+        }
+        if (c == '>') {
+            index = 35;
+        }
+        if (c == '!') {
+            index = 36;
+        }
+        if (c == '?') {
+            index = 37;
+        }
+        if (c == '[') {
+            index = 38;
+        }
+        if (c == ']') {
+            index = 39;
+        }
+        if ('0' <= c && c <= '9') {
+            index = 40 + c - '0';
+        }
+        if (c == '&') {
+            index = 50;
+        }
+        return index;
+    }
+
     /**
      * insertWord.
      */
@@ -89,7 +142,9 @@ public class WordsManager {
         TrieNode current = root;
         for (int i = 0; i < word.getContent().length(); i++) {
             char c = word.getContent().charAt(i);
-            int index = c - 'a';
+            int index = getIndex(c);
+
+            // System.err.println("index: " + index + " char: " + c);
             if (current.getChildren()[index] == null) {
                 current.getChildren()[index] = new TrieNode();
             }
@@ -113,7 +168,7 @@ public class WordsManager {
         TrieNode current = root;
         for (int i = 0; i < Content.length(); i++) {
             char c = Content.charAt(i);
-            int index = c - 'a';
+            int index = getIndex(c);
             if (current.getChildren()[index] == null) {
                 return null;
             }
@@ -146,7 +201,7 @@ public class WordsManager {
             TrieNode cur = Nodes.remove();
             if (pIndex < prefix.length()) {
                 char c = prefix.charAt(pIndex++);
-                int index = c - 'a';
+                int index = getIndex(c);
                 if (cur.getChildren()[index] == null) {
                     System.err.println("No matching word!");
                     return list;
@@ -158,7 +213,7 @@ public class WordsManager {
                     // System.out.println(cur.getWord().getContent());
                     list.add(cur.getWord());
                 }
-                for (int i = 0; i < 26; i++) {
+                for (int i = 0; i < 51; i++) {
                     if (cur.getChildren()[i] != null) {
                         Nodes.add(cur.getChildren()[i]);
                     }
@@ -180,7 +235,7 @@ public class WordsManager {
      * isEmpty.
      */
     public static boolean isEmpty(TrieNode current) {
-        for (int i = 0; i < 26; i++) {
+        for (int i = 0; i < 51; i++) {
             if (current.getChildren()[i] != null) {
                 return false;
             }
@@ -191,7 +246,7 @@ public class WordsManager {
     /**
      * deleteWord.
      */
-    public void deleteWord(TrieNode current, String Content, int depth) {
+    public static void deleteWord(TrieNode current, String Content, int depth) {
         if (current == null) {
             return;
         }
@@ -213,6 +268,21 @@ public class WordsManager {
         if (isEmpty(current) && current.isWord() == false) {
             current = null;
         }
+    }
+
+    /**
+     * deleteWord.
+     */
+    public static void deleteWord(String Content) {
+        deleteWord(root, Content, 0);
+    }
+
+    /**
+     * updateWord.
+     */
+    public static void updateWord(Word word) {
+        deleteWord(word.getContent());
+        insertWord(word);
     }
 
     /**

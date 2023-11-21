@@ -25,8 +25,8 @@ public class TranslateController implements Initializable {
     private static final String VOICE_VALUE = "com.sun.speech.freetts.en.us.cmu_us_kal.KevinVoiceDirectory";
     private static final String VOICE_NAME = "kevin16";
 
-    private static final String[] languageChoices = {"Tiếng Anh", "Tiếng Việt", "Tiếng Hàn", 
-                                    "Tiếng Nhật", "Tiếng Nga"};
+    private static final String[] languageChoices = { "Tiếng Anh", "Tiếng Việt", "Tiếng Hàn",
+            "Tiếng Nhật", "Tiếng Nga" };
 
     @FXML
     private ChoiceBox<String> languageFrom;
@@ -59,7 +59,7 @@ public class TranslateController implements Initializable {
         String path = "src/main/resources/Audio/output.mp3";
         Media media;
         MediaPlayer mediaPlayer;
-        //String path = getClass().getResource("output.mp3").getPath();
+        // String path = getClass().getResource("output.mp3").getPath();
         media = new Media(new File(path).toURI().toString());
         mediaPlayer = new MediaPlayer(media);
         mediaPlayer.setCycleCount(1);
@@ -89,6 +89,6 @@ public class TranslateController implements Initializable {
         languageFrom.getItems().addAll(languageChoices);
         languageTo.getItems().addAll(languageChoices);
         languageFrom.setValue("Tiếng Anh");
-        languageTo.setValue("Tiếng Việt");        
+        languageTo.setValue("Tiếng Việt");
     }
 }

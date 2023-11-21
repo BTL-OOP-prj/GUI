@@ -24,13 +24,13 @@ public class VoiceRSS {
     private static final String API_KEY = "d855f24940dc4b8eaab22e512b3ea899";
     private static final String API_URL = "https://api.voicerss.org/";
     public static String ACCENT = Languages.English_GreatBritain;
-    private static final String[] language = {"en-us", "vi-vn", "ko-kr", "ja-jp", "ru-ru"};
-    private static final String[] languageChoices = {"Tiếng Anh", "Tiếng Việt", "Tiếng Hàn", 
-                                    "Tiếng Nhật", "Tiếng Nga"};
-    
+    private static final String[] language = { "en-us", "vi-vn", "ko-kr", "ja-jp", "ru-ru" };
+    private static final String[] languageChoices = { "Tiếng Anh", "Tiếng Việt", "Tiếng Hàn",
+            "Tiếng Nhật", "Tiếng Nga" };
+
     public static String transcript(String lang) {
         for (int i = 0; i < languageChoices.length; i++) {
-            if(languageChoices[i].equals(lang)) {
+            if (languageChoices[i].equals(lang)) {
                 lang = language[i];
                 break;
             }
@@ -47,7 +47,7 @@ public class VoiceRSS {
             connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
             connection.setDoOutput(true);
             String data = "key=" + API_KEY + "&hl=" + transcript(language)
-            + "&c=MP3&f=16khz_16bit_stereo&src=" + text; 
+                    + "&c=MP3&f=16khz_16bit_stereo&src=" + text;
             OutputStream os = connection.getOutputStream();
             os.write(data.getBytes());
             if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
@@ -66,5 +66,3 @@ public class VoiceRSS {
         }
     }
 }
-
-

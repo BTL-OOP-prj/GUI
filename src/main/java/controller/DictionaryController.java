@@ -10,7 +10,7 @@ import com.sun.speech.freetts.VoiceManager;
 
 import main.java.Core.main_dict.Word;
 import main.java.Core.main_dict.WordsManager;
-import main.java.Core.main_dict.dbToManager;
+import main.java.Core.main_dict.DBManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;

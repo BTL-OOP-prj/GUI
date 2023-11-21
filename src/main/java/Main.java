@@ -13,7 +13,7 @@ public class Main extends Application {
             Parent root = FXMLLoader.load(getClass().getResource("../resources/assets/AppUI.fxml"));
             // Parent root = FXMLLoader.load(getClass().getResource("App.fxml"));
             Scene scene = new Scene(root);
-            primaryStage.setScene(scene);   
+            primaryStage.setScene(scene);
             primaryStage.show();
         } catch (Exception e) {
             // System.err.println("Error: " + e.getMessage());

@@ -6,7 +6,7 @@ import java.util.ResourceBundle;
 
 import main.java.Core.main_dict.Word;
 import main.java.Core.main_dict.WordsManager;
-import main.java.Core.main_dict.dbToManager;
+import main.java.Core.main_dict.DBManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -69,8 +69,8 @@ public class MenuController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        // System.out.println(getClass().getResource("src/main/resources/Eng.txt"));
-        dbToManager.scan("/src/main/resources/Eng.txt");
+        // System.out.println(getClass().getResource("src/main/resources/EV.txt"));
+        DBManager.scan("/src/main/resources/EV.txt");
         // System.out.println(getClass().getResource("../resources/assets/DictionaryUI.fxml"));
         showComponent("../../resources/assets/DictionaryUI.fxml");
     }

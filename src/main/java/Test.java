@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 import main.java.Core.main_dict.Word;
 import main.java.Core.main_dict.WordsManager;
-import main.java.Core.main_dict.dbToManager;
+import main.java.Core.main_dict.DBManager;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.FileOutputStream;
@@ -20,7 +20,7 @@ public class Test {
      */
     public static void dbmod() {
         try {
-            String path = dbToManager.pathGetter("/src/main/resources/EV.txt");
+            String path = DBManager.pathGetter("/src/main/resources/EV.txt");
             System.err.println(path);
             File DBFile = new File(path);
             System.err.println(DBFile.exists() ? "file found" : "file not found");
@@ -29,9 +29,6 @@ public class Test {
                     new OutputStreamWriter(new FileOutputStream("output.txt"), StandardCharsets.UTF_8));
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
-                while (line.indexOf(" | ") != -1) {
-                    line = line.replace(" | ", "|");
-                }
                 writer.write(line);
                 writer.newLine();
             }
@@ -62,9 +59,9 @@ public class Test {
     }
 
     public static void main(String[] args) {
-        dbmod();
-        dbToManager.scan("/src/main/resources/EV.txt");
-        // dbToManager.export("/src/main/resources/EV.txt");
+        // dbmod();
+        DBManager.scan();
+        // DBManager.export();
         // suggestionsTest();
     }
 }
