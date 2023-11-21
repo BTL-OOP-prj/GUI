@@ -72,10 +72,13 @@ public class DictionaryController implements Initializable {
     private Label typeLable;
 
     @FXML
-    private TextArea explainArea;
+    private ListView<String> suggestion;
 
     @FXML
-    private ListView<String> suggestion;
+    private TextArea exampleArea;
+
+    @FXML
+    private TextArea meaningArea;
 
     private String target = "";
 
@@ -93,16 +96,20 @@ public class DictionaryController implements Initializable {
         pronunciationLable.setText(word.getPronunciation());
     }
 
-    public void displayExplain(Word word) {
-        String explain = word.getMeaning() + '\n' + '\n' + word.getExample();
-        explainArea.setText(explain);
+    public void displayMeaning(Word word) {
+        meaningArea.setText(word.getMeaning());
+    }
+
+    public void displayExample(Word word) {
+        meaningArea.setText(word.getMeaning());
     }
 
     private void displayWord(Word word) {
         displayContent(word);
         displayType(word);
         displayPronunciation(word);
-        displayExplain(word);
+        displayMeaning(word);
+        displayExample(word);
     }
 
     private void handleOnKeyTyped() {
@@ -156,7 +163,8 @@ public class DictionaryController implements Initializable {
 
     @FXML
     private void HandleClickEditBtn(ActionEvent e) {
-        explainArea.setEditable(true);
+        meaningArea.setEditable(true);
+        exampleArea.setEditable(true);
         editBtn.setVisible(false);
         saveBtn.setVisible(true);
     }
@@ -177,19 +185,15 @@ public class DictionaryController implements Initializable {
 
     @FXML
     void HandleClickSaveBtn(ActionEvent event) {
-        explainArea.setEditable(false);
+        //String text = explainArea.getText();
+        meaningArea.setEditable(false);
+        exampleArea.setEditable(false);
         saveBtn.setVisible(false);
         editBtn.setVisible(true);
     }
 
     @FXML
     void HandleClickAddBtn(ActionEvent event) {
-        // Dialog<Word> dialog = new Dialog<Word>();
-        // Optional<Word> result = dialog.showAndWait();
-        // if(result.isPresent()) {
-        //     Word word = result.get();
-        //     System.out.println(word.toString());
-        // }
         try {
             AnchorPane component = FXMLLoader.load(getClass().getResource("../../resources/assets/test.fxml"));
             addPane.getChildren().add(component);
@@ -199,14 +203,21 @@ public class DictionaryController implements Initializable {
                 addPane.getChildren().clear();
                 // addPane.setVisible(false);
             });
+
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    @FXML
+    void HandleClickDeleteBtn(ActionEvent event) {
+        DBManager.deleteWord(target);
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        explainArea.setEditable(false);
+        meaningArea.setEditable(false);
+        exampleArea.setEditable(false);
         saveBtn.setVisible(false);
         handleOnKeyTyped();
         searchBox.setOnKeyReleased(e -> {
