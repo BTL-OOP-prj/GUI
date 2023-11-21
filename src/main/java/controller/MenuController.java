@@ -13,6 +13,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.layout.AnchorPane;
 
 public class MenuController implements Initializable {
@@ -23,10 +24,15 @@ public class MenuController implements Initializable {
     private Button dictionaryBtn;
 
     @FXML
-    private Button flashcardBtn;
+    private Button gameBtn;
 
     @FXML
     private Button translateBtn;
+
+    @FXML
+    ChoiceBox<String> gameChoiceBox;
+
+    String[] game = {"Flashcard", "MCQ", "Wordament"};
 
     private void setNode(Node node) {
         container.getChildren().clear();
@@ -63,8 +69,9 @@ public class MenuController implements Initializable {
      * @param event
      * @throws IOException
      */
-    public void switchToFlashcard(ActionEvent e) throws IOException {
-        showComponent("../../resources/assets/FlashcardUI.fxml");
+    public void switchToGame(ActionEvent e) throws IOException {
+        String path = "../../resources/assets/" + gameChoiceBox.getValue() + "UI.fxml";
+        showComponent(path);
     }
 
     @Override
@@ -73,5 +80,7 @@ public class MenuController implements Initializable {
         DBManager.scan("/src/main/resources/EV.txt");
         // System.out.println(getClass().getResource("../resources/assets/DictionaryUI.fxml"));
         showComponent("../../resources/assets/DictionaryUI.fxml");
+        gameChoiceBox.getItems().addAll(game);
+        gameChoiceBox.setValue(game[0]);
     }
 }

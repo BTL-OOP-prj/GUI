@@ -1,0 +1,50 @@
+.root{
+    align-self: center;
+    -fx-background-color: #FFF4E9;
+}
+
+.label {
+    -fx-font-size: 40px;
+    -fx-font-weight: bold;
+    -fx-text-fill:#FFCC3E;
+    -fx-background-color: #FFFFFF; 
+    -fx-padding: 5px;
+    -fx-alignment: center;
+    -fx-background-radius: 20px;
+    -fx-effect: dropshadow(three-pass-box,rgba(255, 204, 62, 1.0), 15, 0, 0, 0);
+
+}
+.scorelabel{
+    -fx-font-size: 20px;
+    -fx-text-fill:rgb(84, 84, 84);
+    -fx-background-radius: 5px;
+}
+
+.button:hover {
+    -fx-font-size: 25px;
+    -fx-font-weight: bold;
+     -fx-background-color: #FFCC3E;
+      -fx-text-fill: black;-fx-background-radius: 15px;
+      -fx-effect: dropshadow(three-pass-box, rgba(255, 204, 62, 0.0), 2, 2, 4, 4);
+}
+.button {
+    -fx-font-size: 25px;
+    -fx-font-weight: bold;
+     -fx-background-color: #FEDA84;
+      -fx-text-fill: black;
+      -fx-background-radius: 15px;
+      -fx-effect: dropshadow(three-pass-box, rgba(255, 204, 62, 1.0), 2, 2, 4, 4);
+}
+
+.correct-answer {
+    -fx-background-color: rgb(136, 230, 136);
+}
+.correct-answer:hover {
+    -fx-background-color: rgb(136, 230, 136);
+}
+.incorrect-answer {
+    -fx-background-color: rgb(215, 61, 61);
+}
+.incorrect-answer:hover {
+    -fx-background-color: rgb(215, 61, 61);
+}
