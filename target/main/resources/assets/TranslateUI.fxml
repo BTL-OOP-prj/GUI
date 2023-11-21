@@ -22,7 +22,7 @@
       </AnchorPane>
       <AnchorPane layoutX="498.0" layoutY="123.0" prefHeight="320.0" prefWidth="360.0" style="-fx-background-radius: 30px; -fx-background-color: white;" AnchorPane.rightAnchor="42.0" AnchorPane.topAnchor="123.0">
          <children>
-            <Label fx:id="resultPane" alignment="TOP_LEFT" style="-fx-background-radius: 30px; -fx-background-color: white;" text="meo" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+            <Label fx:id="resultPane" alignment="TOP_LEFT" style="-fx-background-radius: 30px; -fx-background-color: white;" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
                <font>
                   <Font size="18.0" />
                </font>

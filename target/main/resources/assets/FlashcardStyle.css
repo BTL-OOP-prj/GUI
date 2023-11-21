@@ -1,0 +1,52 @@
+.root{
+    align-self: center;
+    -fx-background-color: #FFF4E9;
+}
+.label {
+    -fx-font-size: 40px;
+    -fx-font-weight: bold;
+    -fx-text-fill:#FFCC3E;
+    -fx-background-color: #FFFFFF; 
+    -fx-padding: 5px;
+    -fx-alignment: center;
+    -fx-background-radius: 20px;
+    -fx-effect: dropshadow(three-pass-box,rgba(255, 204, 62, 1.0), 15, 0, 0, 0);
+
+}
+.label :hover {
+    -fx-background-color: #d7d7d7;
+}
+
+.list-view {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-background-color:  #FFCC3E; 
+}
+
+.list-cell {
+    -fx-text-fill:black;
+}
+.list-cell:filled:hover {
+    -fx-background-color: #FEDA84;
+    -fx-text-fill: black;
+}
+.list-cell:filled:selected:focused, .list-cell:filled:selected {
+    -fx-background-color: #FFCC3E;
+    -fx-text-fill: white;
+}
+.button:hover {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+     -fx-background-color: #FFCC3E;
+      -fx-text-fill: black;-fx-background-radius: 15px;
+      -fx-effect: dropshadow(three-pass-box, rgba(255, 204, 62, 0.0), 2, 2, 4, 4);
+}
+.button {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+     -fx-background-color: #FEDA84;
+      -fx-text-fill: black;
+      -fx-background-radius: 15px;
+      -fx-effect: dropshadow(three-pass-box, rgba(255, 204, 62, 1.0), 2, 2, 4, 4);
+}
+

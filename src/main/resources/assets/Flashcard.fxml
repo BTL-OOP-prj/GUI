@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#show" prefHeight="500.0" prefWidth="900.0" stylesheets="@FlashcardStyle.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.controller.FlashcardController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#show" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FlashcardController">
    <children>
       <ButtonBar layoutX="260.0" layoutY="30.0" prefHeight="50.0" prefWidth="620.0">
         <buttons>
@@ -18,7 +18,7 @@
             <graphic>
         <ImageView fitHeight="22.0" fitWidth="22.0">
             <image>
-                <Image url="@img/addIcon.png" />
+                <Image url="@views/addIcon.png" />
             </image>
         </ImageView>
     </graphic>
@@ -30,7 +30,7 @@
              <graphic>
         <ImageView fitHeight="22.0" fitWidth="22.0">
             <image>
-                <Image url="@img/deleteIcon.png" />
+                <Image url="@views/deleteIcon.png" />
             </image>
         </ImageView>
     </graphic>
@@ -42,7 +42,7 @@
              <graphic>
         <ImageView fitHeight="22.0" fitWidth="22.0">
             <image>
-                <Image url="@img/editIcon.png" />
+                <Image url="@views/editIcon.png" />
             </image>
         </ImageView>
     </graphic>
@@ -54,7 +54,7 @@
              <graphic>
         <ImageView fitHeight="22.0" fitWidth="22.0">
             <image>
-                <Image url="@img/helpIcon.png" />
+                <Image url="@views/helpIcon.png" />
             </image>
         </ImageView>
     </graphic>
@@ -76,11 +76,14 @@
             </TextArea>
             <ImageView fitHeight="50.0" fitWidth="73.0" layoutX="218.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@img/addIcon.png" />
+                  <Image url="@views/addIcon.png" />
                </image>
             </ImageView>
             <Button layoutX="167.0" layoutY="136.0" mnemonicParsing="false" onAction="#onclose" prefHeight="26.0" prefWidth="82.0" text="Close" />
          </children>
       </AnchorPane>
    </children>
+   <stylesheets>
+      <URL value="@FlashcardStyle.css" />
+   </stylesheets>
 </AnchorPane>
