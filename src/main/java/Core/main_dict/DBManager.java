@@ -140,6 +140,7 @@ public class DBManager {
      */
     public static void addWord(Word word) {
         WM.insertWord(word);
+        export();
     }
 
     /**
@@ -147,6 +148,7 @@ public class DBManager {
      */
     public static void deleteWord(String Content) {
         WM.deleteWord(Content);
+        export();
     }
 
     /**
@@ -154,6 +156,7 @@ public class DBManager {
      */
     public static void updateWord(Word word) {
         WM.updateWord(word);
+        export();
     }
 
 }
