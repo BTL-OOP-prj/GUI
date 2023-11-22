@@ -2,13 +2,17 @@ package main.java.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.ResourceBundle;
 
 import main.java.Core.API.VoiceRSS;
 import com.sun.speech.freetts.Voice;
 import com.sun.speech.freetts.VoiceManager;
+
+import edu.cmu.sphinx.tools.audio.AudioPlayer;
 import main.java.Core.API.APITranslator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -73,11 +77,29 @@ public class TranslateController implements Initializable {
 
     @FXML
     void handleSoundBtn1(ActionEvent event) throws Exception {
-        String text = writePane.getText();
-        String language = languageFrom.getValue();
-        VoiceRSS.audioFilePath(text, language);
-        playHitSound();
-        System.out.println("end1");
+        // String text = writePane.getText();
+        // String language = languageFrom.getValue();
+        // VoiceRSS.audioFilePath(text, language);
+        // playHitSound();
+        // System.out.println("end1");
+        Thread speakFromThread = new Thread(() -> {
+            //generateTextToSpeech(input.getText(), langFrom.getText());
+
+            //String gongFile = "output.mp3";
+            //InputStream in = null;
+            try {
+                String text = writePane.getText();
+                String language = languageFrom.getValue();
+                VoiceRSS.audioFilePath(text, language);
+                playHitSound();
+                System.out.println("end1");
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+        speakFromThread.start();
     }
 
     @FXML

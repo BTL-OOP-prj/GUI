@@ -2,7 +2,9 @@ package main.java.controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
+import main.java.Core.main_dict.Word;
+import main.java.Core.main_dict.WordsManager;
+import main.java.Core.main_dict.DBManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -37,6 +39,17 @@ public class AddWordController implements Initializable {
         System.out.println(pronunciation.getText());
         System.out.println(meaning.getText());
         System.out.println(example.getText());
+        if(content.getText() != null && type.getValue() != null && meaning.getText() != null && pronunciation.getText() != null && example.getText() != null) {
+            Word word = new Word(content.getText(), type.getValue(), meaning.getText(), pronunciation.getText(), example.getText());
+            DBManager.addWord(word);
+            content.setText(null);
+            type.setValue(null);
+            pronunciation.setText(null);
+            meaning.setText(null);
+            example.setText(null);
+        } else {
+            System.out.println("Dữ liệu nhập vào không đạt điều kiện");
+        }
     }
 
     @Override
