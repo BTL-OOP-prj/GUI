@@ -2,17 +2,13 @@ package main.java.controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.URL;
-import java.nio.file.Paths;
 import java.util.List;
 import java.util.ResourceBundle;
 
 import main.java.Core.API.VoiceRSS;
 import com.sun.speech.freetts.Voice;
 import com.sun.speech.freetts.VoiceManager;
-
-import edu.cmu.sphinx.tools.audio.AudioPlayer;
 import main.java.Core.API.APITranslator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -50,6 +46,11 @@ public class TranslateController implements Initializable {
     @FXML
     private ImageView soundBtn2;
 
+    // Set UTF-8 encoding
+    static {
+        System.setProperty("file.encoding", "UTF-8");
+    }
+
     @FXML
     void HandleClickTranslateBtn(ActionEvent event) throws IOException {
         String text = writePane.getText();
@@ -72,6 +73,7 @@ public class TranslateController implements Initializable {
 
     @FXML
     void handleSoundBtn1(ActionEvent event) throws Exception {
+<<<<<<< HEAD
         // String text = writePane.getText();
         // String language = languageFrom.getValue();
         // VoiceRSS.audioFilePath(text, language);
@@ -91,6 +93,13 @@ public class TranslateController implements Initializable {
             }
         });
         speakFromThread.start();
+=======
+        String text = writePane.getText();
+        String language = languageFrom.getValue();
+        VoiceRSS.audioFilePath(text, language);
+        playHitSound();
+        System.out.println("end1");
+>>>>>>> a01be384785ee3cf9a319b254cf9a88341cd4d66
     }
 
     @FXML

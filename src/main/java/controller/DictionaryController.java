@@ -9,7 +9,6 @@ import com.sun.speech.freetts.Voice;
 import com.sun.speech.freetts.VoiceManager;
 
 import main.java.Core.main_dict.Word;
-import main.java.Core.main_dict.WordsManager;
 import main.java.Core.main_dict.DBManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -35,12 +34,11 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.Node;
 
-
 public class DictionaryController implements Initializable {
     private static final String VOICE_KEY = "freetts.voices";
     private static final String VOICE_VALUE = "com.sun.speech.freetts.en.us.cmu_us_kal.KevinVoiceDirectory";
     private static final String VOICE_NAME = "kevin16";
-    
+
     @FXML
     private AnchorPane addPane;
 
@@ -72,13 +70,10 @@ public class DictionaryController implements Initializable {
     private Label typeLable;
 
     @FXML
+    private TextArea explainArea;
+
+    @FXML
     private ListView<String> suggestion;
-
-    @FXML
-    private TextArea exampleArea;
-
-    @FXML
-    private TextArea meaningArea;
 
     private String target = "";
 
@@ -96,25 +91,22 @@ public class DictionaryController implements Initializable {
         pronunciationLable.setText(word.getPronunciation());
     }
 
-    public void displayMeaning(Word word) {
-        meaningArea.setText(word.getMeaning());
-    }
-
-    public void displayExample(Word word) {
-        meaningArea.setText(word.getMeaning());
+    public void displayExplain(Word word) {
+        String explain = word.getMeaning() + '\n' + '\n' + word.getExample();
+        explainArea.setText(explain);
     }
 
     private void displayWord(Word word) {
         displayContent(word);
         displayType(word);
         displayPronunciation(word);
-        displayMeaning(word);
-        displayExample(word);
+        displayExplain(word);
     }
 
     private void handleOnKeyTyped() {
         list.clear();
         String searchWord = searchBox.getText();
+<<<<<<< HEAD
         List<Word> recWordList = WordsManager.suggestions(searchWord);
         for (Word word : recWordList) {
             list.add(word.getContent());
@@ -122,6 +114,25 @@ public class DictionaryController implements Initializable {
         if (list.isEmpty()) {
             suggestion.setItems(list);
         } else {
+=======
+        List<Word> recWordList = DBManager.WM.suggestions(searchWord);
+        ;
+
+        for (Word word : recWordList) {
+            list.add(word.getContent());
+        }
+        // for (int i = 0; i <= NUM_OF_WORDS; i++) {
+        // if (i < recWordList.size()) {
+        // list.add(recWordList.get(i).getWordTarget());
+        // }
+        // }
+
+        if (list.isEmpty()) {
+            // notAvailable.setVisible(true);
+            suggestion.setItems(list);
+        } else {
+            // notAvailable.setVisible(false);
+>>>>>>> a01be384785ee3cf9a319b254cf9a88341cd4d66
             suggestion.setItems(list);
         }
     }
@@ -132,11 +143,11 @@ public class DictionaryController implements Initializable {
      */
     @FXML
     private void HandleSearchBtn(ActionEvent e) throws IOException {
-        if(!searchBox.getText().isEmpty()) {
+        if (!searchBox.getText().isEmpty()) {
             target = searchBox.getText();
         }
         System.out.println(target);
-        Word word = WordsManager.searchWord(target);
+        Word word = DBManager.WM.searchWord(target);
         System.out.println(word.getMeaning());
         displayWord(word);
     }
@@ -144,16 +155,15 @@ public class DictionaryController implements Initializable {
     @FXML
     private void HandleMouseClickListView(MouseEvent e) {
         String selectedWord = suggestion.getSelectionModel().getSelectedItem();
-        Word word = WordsManager.searchWord(selectedWord);
+        Word word = DBManager.WM.searchWord(selectedWord);
         target = word.getContent();
         displayWord(word);
-//        System.out.println(word.getWordTarget() + " " + word.isFavorite());
+        // System.out.println(word.getWordTarget() + " " + word.isFavorite());
     }
 
     @FXML
     private void HandleClickEditBtn(ActionEvent e) {
-        meaningArea.setEditable(true);
-        exampleArea.setEditable(true);
+        explainArea.setEditable(true);
         editBtn.setVisible(false);
         saveBtn.setVisible(true);
     }
@@ -164,7 +174,7 @@ public class DictionaryController implements Initializable {
         Voice voice = VoiceManager.getInstance().getVoice(VOICE_NAME);
         if (voice != null) {
             voice.allocate();
-            voice.setRate(100);  
+            voice.setRate(100);
             voice.speak(target);
             voice.deallocate();
         } else {
@@ -174,15 +184,19 @@ public class DictionaryController implements Initializable {
 
     @FXML
     void HandleClickSaveBtn(ActionEvent event) {
-        //String text = explainArea.getText();
-        meaningArea.setEditable(false);
-        exampleArea.setEditable(false);
+        explainArea.setEditable(false);
         saveBtn.setVisible(false);
         editBtn.setVisible(true);
     }
 
     @FXML
     void HandleClickAddBtn(ActionEvent event) {
+        // Dialog<Word> dialog = new Dialog<Word>();
+        // Optional<Word> result = dialog.showAndWait();
+        // if(result.isPresent()) {
+        // Word word = result.get();
+        // System.out.println(word.toString());
+        // }
         try {
             AnchorPane component = FXMLLoader.load(getClass().getResource("../../resources/assets/test.fxml"));
             addPane.getChildren().add(component);
@@ -192,13 +206,17 @@ public class DictionaryController implements Initializable {
                 addPane.getChildren().clear();
                 // addPane.setVisible(false);
             });
+<<<<<<< HEAD
             DBManager.scan("/src/main/resources/EV.txt");
             handleOnKeyTyped();
+=======
+>>>>>>> a01be384785ee3cf9a319b254cf9a88341cd4d66
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+<<<<<<< HEAD
     @FXML
     void HandleClickDeleteBtn(ActionEvent event) {
         Word word = new Word("", "", "", "", "");
@@ -209,20 +227,21 @@ public class DictionaryController implements Initializable {
         handleOnKeyTyped();
     }
 
+=======
+>>>>>>> a01be384785ee3cf9a319b254cf9a88341cd4d66
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        meaningArea.setEditable(false);
-        exampleArea.setEditable(false);
+        explainArea.setEditable(false);
         saveBtn.setVisible(false);
         handleOnKeyTyped();
         searchBox.setOnKeyReleased(e -> {
             if (searchBox.getText().isEmpty()) {
-                //setListDefault();
+                // setListDefault();
             } else {
                 handleOnKeyTyped();
             }
         });
-        // WordsManager.suggestions("al");
+        // DBManager.WM.suggestions("al");
         // System.out.println("hehe");
     }
 }

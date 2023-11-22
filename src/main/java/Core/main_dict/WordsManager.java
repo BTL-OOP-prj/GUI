@@ -10,7 +10,7 @@ public class WordsManager {
     /**
      * TrieNode.
      */
-    public static class TrieNode {
+    public class TrieNode {
         private TrieNode[] children = new TrieNode[51];
         private boolean isWord;
         private Word word;
@@ -61,12 +61,12 @@ public class WordsManager {
         }
     }
 
-    public static TrieNode root = new TrieNode();
+    protected TrieNode root = new TrieNode();
 
     /**
      * insertWord.
      */
-    static Word normalizeWord(Word word) {
+    protected Word normalizeWord(Word word) {
         Word newWord = new Word(word.getContent(), word.getType(), word.getMeaning(), word.getPronunciation(),
                 word.getExample());
         newWord.setContent(newWord.getContent().toLowerCase());
@@ -77,7 +77,7 @@ public class WordsManager {
         return newWord;
     }
 
-    static int getIndex(char c) {
+    protected int getIndex(char c) {
         int index = c - 'a';
         if (c == ' ') {
             index = 26;
@@ -133,7 +133,7 @@ public class WordsManager {
     /**
      * insertWord.
      */
-    public static void insertWord(Word raw_word) {
+    public void insertWord(Word raw_word) {
         if (raw_word == null) {
             return;
         }
@@ -160,7 +160,7 @@ public class WordsManager {
      * @param Content String
      * @return Word or null
      */
-    public static Word searchWord(String raw_Content) {
+    public Word searchWord(String raw_Content) {
         if (raw_Content == null) {
             return null;
         }
@@ -184,14 +184,14 @@ public class WordsManager {
      * suggestions.
      * default prefix = ""
      */
-    public static List<Word> suggestions() {
+    public List<Word> suggestions() {
         return suggestions("");
     }
 
     /**
      * Suggestions.
      */
-    public static List<Word> suggestions(String prefix) {
+    public List<Word> suggestions(String prefix) {
         List<Word> list = new ArrayList<Word>();
         prefix = prefix.toLowerCase();
         Queue<TrieNode> Nodes = new LinkedList<>();
@@ -227,14 +227,14 @@ public class WordsManager {
     /**
      * getAllWords.
      */
-    public static List<Word> getAllWords() {
+    public List<Word> getAllWords() {
         return suggestions();
     }
 
     /**
      * isEmpty.
      */
-    public static boolean isEmpty(TrieNode current) {
+    public boolean isEmpty(TrieNode current) {
         for (int i = 0; i < 51; i++) {
             if (current.getChildren()[i] != null) {
                 return false;
@@ -246,7 +246,7 @@ public class WordsManager {
     /**
      * deleteWord.
      */
-    public static void deleteWord(TrieNode current, String Content, int depth) {
+    public void deleteWord(TrieNode current, String Content, int depth) {
         if (current == null) {
             return;
         }
@@ -273,14 +273,14 @@ public class WordsManager {
     /**
      * deleteWord.
      */
-    public static void deleteWord(String Content) {
+    public void deleteWord(String Content) {
         deleteWord(root, Content, 0);
     }
 
     /**
      * updateWord.
      */
-    public static void updateWord(Word word) {
+    public void updateWord(Word word) {
         deleteWord(word.getContent());
         insertWord(word);
     }
@@ -288,7 +288,7 @@ public class WordsManager {
     /**
      * main.
      */
-    // public static void main(String[] args) {
+    // public void main(String[] args) {
     // Word word = new Word("Hello", "Noun", "Xin chao", "Hello World");
     // WordsManager.insertWord(word);
     // Word word2 = searchWord("Hello");
