@@ -79,9 +79,8 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <TextArea fx:id="meaningArea" layoutX="40.0" layoutY="129.0" maxHeight="10000.0" maxWidth="550.0" prefHeight="130.0" prefWidth="550.0" style="-fx-background-color: transparent; -fx-font-size: 18px;" wrapText="true" />
-            <AnchorPane fx:id="addPane" layoutX="187.0" layoutY="58.0" prefHeight="320.0" prefWidth="438.0" style="-fx-scale-x: 0.8; -fx-scale-y: 0.8;" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="5.0" />
-            <TextArea fx:id="exampleArea" layoutX="40.0" layoutY="260.0" maxHeight="10000.0" maxWidth="550.0" prefHeight="120.0" prefWidth="550.0" style="-fx-background-color: transparent; -fx-font-size: 18px;" wrapText="true" />
+            <TextArea fx:id="explainArea" layoutX="40.0" layoutY="130.0" maxHeight="10000.0" maxWidth="550.0" prefHeight="237.0" prefWidth="550.0" style="-fx-background-color: transparent; -fx-font-size: 18px;" wrapText="true" />
+            <AnchorPane fx:id="addPane" layoutX="187.0" layoutY="58.0" prefHeight="320.0" prefWidth="438.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="30.0" />
          </children>
       </AnchorPane>
       <Button fx:id="addBtn" layoutX="461.0" layoutY="13.0" mnemonicParsing="false" onAction="#HandleClickAddBtn" style="-fx-background-color: transparent;" text=" " AnchorPane.rightAnchor="380.0" AnchorPane.topAnchor="16.0">

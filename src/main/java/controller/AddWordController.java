@@ -2,9 +2,7 @@ package main.java.controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import main.java.Core.main_dict.Word;
-import main.java.Core.main_dict.WordsManager;
-import main.java.Core.main_dict.DBManager;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -15,6 +13,8 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import main.java.Core.main_dict.DBManager;
+import main.java.Core.main_dict.Word;
 
 public class AddWordController implements Initializable {
     @FXML
@@ -43,7 +43,7 @@ public class AddWordController implements Initializable {
                 && pronunciation.getText() != null && example.getText() != null) {
             Word word = new Word(content.getText(), type.getValue(), meaning.getText(), pronunciation.getText(),
                     example.getText());
-            DBManager.addWord(word);
+            DBManager.WM.insertWord(word);
             content.setText(null);
             type.setValue(null);
             pronunciation.setText(null);
