@@ -9,7 +9,6 @@ import com.sun.speech.freetts.Voice;
 import com.sun.speech.freetts.VoiceManager;
 
 import main.java.Core.main_dict.Word;
-import main.java.Core.main_dict.WordsManager;
 import main.java.Core.main_dict.DBManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -35,12 +34,11 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.Node;
 
-
 public class DictionaryController implements Initializable {
     private static final String VOICE_KEY = "freetts.voices";
     private static final String VOICE_VALUE = "com.sun.speech.freetts.en.us.cmu_us_kal.KevinVoiceDirectory";
     private static final String VOICE_NAME = "kevin16";
-    
+
     @FXML
     private AnchorPane addPane;
 
@@ -108,23 +106,23 @@ public class DictionaryController implements Initializable {
     private void handleOnKeyTyped() {
         list.clear();
         String searchWord = searchBox.getText();
-        List<Word> recWordList = WordsManager.suggestions(searchWord);;
-
+        List<Word> recWordList = DBManager.WM.suggestions(searchWord);
+        ;
 
         for (Word word : recWordList) {
             list.add(word.getContent());
         }
-//        for (int i = 0; i <= NUM_OF_WORDS; i++) {
-//            if (i < recWordList.size()) {
-//                list.add(recWordList.get(i).getWordTarget());
-//            }
-//        }
+        // for (int i = 0; i <= NUM_OF_WORDS; i++) {
+        // if (i < recWordList.size()) {
+        // list.add(recWordList.get(i).getWordTarget());
+        // }
+        // }
 
         if (list.isEmpty()) {
-            //notAvailable.setVisible(true);
+            // notAvailable.setVisible(true);
             suggestion.setItems(list);
         } else {
-            //notAvailable.setVisible(false);
+            // notAvailable.setVisible(false);
             suggestion.setItems(list);
 
         }
@@ -136,11 +134,11 @@ public class DictionaryController implements Initializable {
      */
     @FXML
     private void HandleSearchBtn(ActionEvent e) throws IOException {
-        if(!searchBox.getText().isEmpty()) {
+        if (!searchBox.getText().isEmpty()) {
             target = searchBox.getText();
         }
         System.out.println(target);
-        Word word = WordsManager.searchWord(target);
+        Word word = DBManager.WM.searchWord(target);
         System.out.println(word.getMeaning());
         displayWord(word);
     }
@@ -148,10 +146,10 @@ public class DictionaryController implements Initializable {
     @FXML
     private void HandleMouseClickListView(MouseEvent e) {
         String selectedWord = suggestion.getSelectionModel().getSelectedItem();
-        Word word = WordsManager.searchWord(selectedWord);
+        Word word = DBManager.WM.searchWord(selectedWord);
         target = word.getContent();
         displayWord(word);
-//        System.out.println(word.getWordTarget() + " " + word.isFavorite());
+        // System.out.println(word.getWordTarget() + " " + word.isFavorite());
     }
 
     @FXML
@@ -167,7 +165,7 @@ public class DictionaryController implements Initializable {
         Voice voice = VoiceManager.getInstance().getVoice(VOICE_NAME);
         if (voice != null) {
             voice.allocate();
-            voice.setRate(100);  
+            voice.setRate(100);
             voice.speak(target);
             voice.deallocate();
         } else {
@@ -187,8 +185,8 @@ public class DictionaryController implements Initializable {
         // Dialog<Word> dialog = new Dialog<Word>();
         // Optional<Word> result = dialog.showAndWait();
         // if(result.isPresent()) {
-        //     Word word = result.get();
-        //     System.out.println(word.toString());
+        // Word word = result.get();
+        // System.out.println(word.toString());
         // }
         try {
             AnchorPane component = FXMLLoader.load(getClass().getResource("../../resources/assets/test.fxml"));
@@ -211,12 +209,12 @@ public class DictionaryController implements Initializable {
         handleOnKeyTyped();
         searchBox.setOnKeyReleased(e -> {
             if (searchBox.getText().isEmpty()) {
-                //setListDefault();
+                // setListDefault();
             } else {
                 handleOnKeyTyped();
             }
         });
-        // WordsManager.suggestions("al");
+        // DBManager.WM.suggestions("al");
         // System.out.println("hehe");
     }
 }

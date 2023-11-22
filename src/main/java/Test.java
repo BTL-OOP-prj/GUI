@@ -7,6 +7,7 @@ import java.util.Scanner;
 import main.java.Core.main_dict.Word;
 import main.java.Core.main_dict.WordsManager;
 import main.java.Core.main_dict.DBManager;
+
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.FileOutputStream;
@@ -38,30 +39,9 @@ public class Test {
         }
     }
 
-    /**
-     * suggestions test.
-     */
-    public static void suggestionsTest() {
-        List<Word> words = WordsManager.suggestions("al");
-        try {
-            BufferedWriter writer = new BufferedWriter(
-                    new OutputStreamWriter(new FileOutputStream("output.txt"),
-                            StandardCharsets.UTF_8));
-            for (Word word : words) {
-                writer.write(word.getPronunciation().equals("@") ? word.getContent()
-                        : word.getContent() + " " + word.getPronunciation());
-                writer.newLine();
-            }
-            writer.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
     public static void main(String[] args) {
         // dbmod();
         DBManager.scan();
         // DBManager.export();
-        // suggestionsTest();
     }
 }

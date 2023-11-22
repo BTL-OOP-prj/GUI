@@ -3,12 +3,12 @@ package main.java.Core.main_dict;
 import java.io.*;
 import java.util.List;
 import java.util.Scanner;
-import main.java.Core.main_dict.Word;
-import main.java.Core.main_dict.WordsManager;
-import java.net.*;
 import java.nio.charset.StandardCharsets;
 
 public class DBManager {
+
+    public static WordsManager WM = new WordsManager();
+    public static WordsManager FW = new WordsManager();
 
     /**
      * split.
@@ -90,7 +90,7 @@ public class DBManager {
                     Pronunciation = "";
                 }
                 Word word = new Word(Content, Type, Meaning, Pronunciation, Example);
-                WordsManager.insertWord(word);
+                WM.insertWord(word);
             }
             sc.close();
         } catch (FileNotFoundException e) {
@@ -113,7 +113,7 @@ public class DBManager {
     public static void export(String path) {
         try {
             path = pathGetter(path);
-            List<Word> words = WordsManager.getAllWords();
+            List<Word> words = WM.getAllWords();
             BufferedWriter writer = new BufferedWriter(
                     new OutputStreamWriter(new FileOutputStream(path), StandardCharsets.UTF_8));
             for (Word word : words) {
@@ -139,21 +139,21 @@ public class DBManager {
      * addWord.
      */
     public static void addWord(Word word) {
-        WordsManager.insertWord(word);
+        WM.insertWord(word);
     }
 
     /**
      * deleteWord.
      */
     public static void deleteWord(String Content) {
-        WordsManager.deleteWord(Content);
+        WM.deleteWord(Content);
     }
 
     /**
      * updateWord.
      */
     public static void updateWord(Word word) {
-        WordsManager.updateWord(word);
+        WM.updateWord(word);
     }
 
 }

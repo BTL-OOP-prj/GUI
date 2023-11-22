@@ -46,6 +46,11 @@ public class TranslateController implements Initializable {
     @FXML
     private ImageView soundBtn2;
 
+    // Set UTF-8 encoding
+    static {
+        System.setProperty("file.encoding", "UTF-8");
+    }
+
     @FXML
     void HandleClickTranslateBtn(ActionEvent event) throws IOException {
         String text = writePane.getText();
