@@ -1,6 +1,5 @@
 apple:qua tao
 book:sách
-cat:con mèo
 computer:máy tính
 demo:de mo1
 high:cao

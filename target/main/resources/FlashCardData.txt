@@ -1,0 +1,13 @@
+apple:qua tao
+book:sách
+computer:máy tính
+demo:de mo1
+high:cao
+nhap:nhap
+nhap1:nhapp
+pain:thuong
+pen:bút
+short:thấp
+white:màu trắng
+yellow:màu vàng
+関係:quan hệ

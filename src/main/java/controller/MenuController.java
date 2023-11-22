@@ -32,7 +32,7 @@ public class MenuController implements Initializable {
     @FXML
     ChoiceBox<String> gameChoiceBox;
 
-    String[] game = {"Flashcard", "MCQ", "Wordament"};
+    String[] game = { "Flashcard", "MCQ", "Wordament" };
 
     private void setNode(Node node) {
         container.getChildren().clear();

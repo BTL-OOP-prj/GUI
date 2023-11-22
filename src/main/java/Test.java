@@ -1,15 +1,11 @@
 package main.java;
 
 import java.io.File;
-import java.util.List;
 import java.util.Scanner;
 
-import main.java.Core.main_dict.Word;
-import main.java.Core.main_dict.WordsManager;
 import main.java.Core.main_dict.DBManager;
 
 import java.io.BufferedWriter;
-import java.io.FileWriter;
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
 import java.nio.charset.StandardCharsets;

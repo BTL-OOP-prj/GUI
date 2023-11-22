@@ -39,8 +39,10 @@ public class AddWordController implements Initializable {
         System.out.println(pronunciation.getText());
         System.out.println(meaning.getText());
         System.out.println(example.getText());
-        if(content.getText() != null && type.getValue() != null && meaning.getText() != null && pronunciation.getText() != null && example.getText() != null) {
-            Word word = new Word(content.getText(), type.getValue(), meaning.getText(), pronunciation.getText(), example.getText());
+        if (content.getText() != null && type.getValue() != null && meaning.getText() != null
+                && pronunciation.getText() != null && example.getText() != null) {
+            Word word = new Word(content.getText(), type.getValue(), meaning.getText(), pronunciation.getText(),
+                    example.getText());
             DBManager.addWord(word);
             content.setText(null);
             type.setValue(null);
@@ -54,10 +56,10 @@ public class AddWordController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        String[] typeWord = {"Noun", "Verb", "Adjective", 
-                    "Pronoun", "Adverb", "Preposition",
-                    "Conjunction", "Interjection"};
+        String[] typeWord = { "Noun", "Verb", "Adjective",
+                "Pronoun", "Adverb", "Preposition",
+                "Conjunction", "Interjection" };
         type.getItems().addAll(typeWord);
     }
-    
+
 }
