@@ -54,9 +54,9 @@ public class AddWordController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        String[] typeWord = {"Noun", "Verb", "Adjective", 
-                    "Pronoun", "Adverb", "Preposition",
-                    "Conjunction", "Interjection"};
+        String[] typeWord = {"Danh từ", "Động từ", "Tính từ", 
+                    "Đại từ", "Quan hệ từ", "Số từ",
+                    "Lượng từ", "Trạng từ"};
         type.getItems().addAll(typeWord);
     }
     

@@ -19,7 +19,7 @@ public class Main extends Application {
             // System.err.println("Error: " + e.getMessage());
             e.printStackTrace();
         }
-    }
+    }   
 
     public static void main(String[] args) {
         launch(args);

@@ -115,25 +115,14 @@ public class DictionaryController implements Initializable {
     private void handleOnKeyTyped() {
         list.clear();
         String searchWord = searchBox.getText();
-        List<Word> recWordList = WordsManager.suggestions(searchWord);;
-
-
+        List<Word> recWordList = WordsManager.suggestions(searchWord);
         for (Word word : recWordList) {
             list.add(word.getContent());
         }
-//        for (int i = 0; i <= NUM_OF_WORDS; i++) {
-//            if (i < recWordList.size()) {
-//                list.add(recWordList.get(i).getWordTarget());
-//            }
-//        }
-
         if (list.isEmpty()) {
-            //notAvailable.setVisible(true);
             suggestion.setItems(list);
         } else {
-            //notAvailable.setVisible(false);
             suggestion.setItems(list);
-
         }
     }
 
@@ -203,7 +192,8 @@ public class DictionaryController implements Initializable {
                 addPane.getChildren().clear();
                 // addPane.setVisible(false);
             });
-
+            DBManager.scan("/src/main/resources/EV.txt");
+            handleOnKeyTyped();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -211,7 +201,12 @@ public class DictionaryController implements Initializable {
 
     @FXML
     void HandleClickDeleteBtn(ActionEvent event) {
+        Word word = new Word("", "", "", "", "");
+        displayWord(word);
         DBManager.deleteWord(target);
+        System.out.println("Đã xóa từ");
+        DBManager.scan("/src/main/resources/EV.txt");
+        handleOnKeyTyped();
     }
 
     @Override
