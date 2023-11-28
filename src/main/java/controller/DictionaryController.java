@@ -106,15 +106,6 @@ public class DictionaryController implements Initializable {
     private void handleOnKeyTyped() {
         list.clear();
         String searchWord = searchBox.getText();
-<<<<<<< HEAD
-        List<Word> recWordList = WordsManager.suggestions(searchWord);
-        for (Word word : recWordList) {
-            list.add(word.getContent());
-        }
-        if (list.isEmpty()) {
-            suggestion.setItems(list);
-        } else {
-=======
         List<Word> recWordList = DBManager.WM.suggestions(searchWord);
         ;
 
@@ -132,8 +123,8 @@ public class DictionaryController implements Initializable {
             suggestion.setItems(list);
         } else {
             // notAvailable.setVisible(false);
->>>>>>> a01be384785ee3cf9a319b254cf9a88341cd4d66
             suggestion.setItems(list);
+
         }
     }
 
@@ -206,29 +197,11 @@ public class DictionaryController implements Initializable {
                 addPane.getChildren().clear();
                 // addPane.setVisible(false);
             });
-<<<<<<< HEAD
-            DBManager.scan("/src/main/resources/EV.txt");
-            handleOnKeyTyped();
-=======
->>>>>>> a01be384785ee3cf9a319b254cf9a88341cd4d66
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-<<<<<<< HEAD
-    @FXML
-    void HandleClickDeleteBtn(ActionEvent event) {
-        Word word = new Word("", "", "", "", "");
-        displayWord(word);
-        DBManager.deleteWord(target);
-        System.out.println("Đã xóa từ");
-        DBManager.scan("/src/main/resources/EV.txt");
-        handleOnKeyTyped();
-    }
-
-=======
->>>>>>> a01be384785ee3cf9a319b254cf9a88341cd4d66
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         explainArea.setEditable(false);

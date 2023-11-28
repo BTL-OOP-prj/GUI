@@ -67,62 +67,26 @@ public class TranslateController implements Initializable {
         // String path = getClass().getResource("output.mp3").getPath();
         media = new Media(new File(path).toURI().toString());
         mediaPlayer = new MediaPlayer(media);
-        //mediaPlayer.setCycleCount(1);
+        mediaPlayer.setCycleCount(1);
         mediaPlayer.play();
     }
 
     @FXML
     void handleSoundBtn1(ActionEvent event) throws Exception {
-<<<<<<< HEAD
-        // String text = writePane.getText();
-        // String language = languageFrom.getValue();
-        // VoiceRSS.audioFilePath(text, language);
-        // playHitSound();
-        // System.out.println("end1");
-        Thread speakFromThread = new Thread(() -> {
-            try {
-                String text = writePane.getText();
-                String language = languageFrom.getValue();
-                VoiceRSS.audioFilePath(text, language);
-                playHitSound();
-                System.out.println("end1");
-            } catch (IOException ex) {
-                throw new RuntimeException(ex);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        });
-        speakFromThread.start();
-=======
         String text = writePane.getText();
         String language = languageFrom.getValue();
         VoiceRSS.audioFilePath(text, language);
         playHitSound();
         System.out.println("end1");
->>>>>>> a01be384785ee3cf9a319b254cf9a88341cd4d66
     }
 
     @FXML
     void handleSoundBtn2(ActionEvent event) throws Exception {
-//        String text = resultPane.getText();
-//        String language = languageTo.getValue();
-//        VoiceRSS.audioFilePath(text, language);
-//        playHitSound();
-//        System.out.println("end2");
-        Thread speakFromThread = new Thread(() -> {
-            try {
-                String text = resultPane.getText();
-                String language = languageTo.getValue();
-                VoiceRSS.audioFilePath(text, language);
-                playHitSound();
-                System.out.println("end2");
-            } catch (IOException ex) {
-                throw new RuntimeException(ex);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        });
-        speakFromThread.start();
+        String text = resultPane.getText();
+        String language = languageTo.getValue();
+        VoiceRSS.audioFilePath(text, language);
+        playHitSound();
+        System.out.println("end2");
     }
 
     @Override

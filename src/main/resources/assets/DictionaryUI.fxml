@@ -59,12 +59,12 @@
                </image>
             </ImageView>
             <Line endX="492.0" layoutX="41.5" layoutY="136.5" stroke="#ffcc40" strokeWidth="3.0" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="110.0" />
-            <Label fx:id="contentLable" layoutX="48.0" layoutY="33.0" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="10.0">
+            <Label fx:id="contentLable" layoutX="48.0" layoutY="33.0" text="ab" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="10.0">
                <font>
                   <Font name="System Bold" size="30.0" />
                </font>
             </Label>
-            <Label fx:id="typeLable" layoutX="40.0" layoutY="58.0" wrapText="true" AnchorPane.topAnchor="50.0">
+            <Label fx:id="typeLable" layoutX="40.0" layoutY="58.0" text="noun" wrapText="true" AnchorPane.topAnchor="50.0">
                <font>
                   <Font size="18.0" />
                </font>
@@ -74,19 +74,13 @@
                   <Image url="@img/icons8-sound-96.png" />
                </image>
             </ImageView>
-            <Label fx:id="pronunciationLable" layoutX="75.0" layoutY="95.0" wrapText="true" AnchorPane.topAnchor="75.0">
+            <Label fx:id="pronunciationLable" layoutX="75.0" layoutY="95.0" text="/ab/" wrapText="true" AnchorPane.topAnchor="75.0">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-<<<<<<< HEAD
-            <TextArea fx:id="meaningArea" layoutX="40.0" layoutY="129.0" maxHeight="10000.0" maxWidth="550.0" prefHeight="130.0" prefWidth="550.0" style="-fx-background-color: transparent; -fx-font-size: 18px;" wrapText="true" />
-            <TextArea fx:id="exampleArea" layoutX="40.0" layoutY="260.0" maxHeight="10000.0" maxWidth="550.0" prefHeight="120.0" prefWidth="550.0" style="-fx-background-color: transparent; -fx-font-size: 18px;" wrapText="true" />
-            <AnchorPane fx:id="addPane" layoutX="187.0" layoutY="58.0" prefHeight="320.0" prefWidth="438.0" style="-fx-scale-x: 0.8; -fx-scale-y: 0.8;" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="10.0" />
-=======
             <TextArea fx:id="explainArea" layoutX="40.0" layoutY="130.0" maxHeight="10000.0" maxWidth="550.0" prefHeight="237.0" prefWidth="550.0" style="-fx-background-color: transparent; -fx-font-size: 18px;" wrapText="true" />
             <AnchorPane fx:id="addPane" layoutX="187.0" layoutY="58.0" prefHeight="320.0" prefWidth="438.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="30.0" />
->>>>>>> a01be384785ee3cf9a319b254cf9a88341cd4d66
          </children>
       </AnchorPane>
       <Button fx:id="addBtn" layoutX="461.0" layoutY="13.0" mnemonicParsing="false" onAction="#HandleClickAddBtn" style="-fx-background-color: transparent;" text=" " AnchorPane.rightAnchor="380.0" AnchorPane.topAnchor="16.0">
@@ -98,7 +92,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutX="535.0" layoutY="34.0" mnemonicParsing="false" onAction="#HandleClickDeleteBtn" style="-fx-background-color: transparent;" text=" " AnchorPane.rightAnchor="320.0" AnchorPane.topAnchor="15.0">
+      <Button layoutX="535.0" layoutY="34.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text=" " AnchorPane.rightAnchor="320.0" AnchorPane.topAnchor="15.0">
          <graphic>
             <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                <image>
