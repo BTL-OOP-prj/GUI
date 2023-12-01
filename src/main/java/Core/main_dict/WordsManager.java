@@ -246,30 +246,29 @@ public class WordsManager {
     /**
      * deleteWord.
      */
-    public void deleteWord(TrieNode current, String Content, int depth) {
+
+
+    //trang
+    public void deleteWord(TrieNode current, String content, int depth) {
         if (current == null) {
             return;
         }
-
-        if (depth == Content.length() - 1) {
+    
+        if (depth == content.length()) {
             if (!current.isWord()) {
                 return;
             }
             current.setIsWord(false);
-            if (isEmpty(current)) {
-                current = null;
+        } else {
+            int index = getIndex(content.charAt(depth));
+            deleteWord(current.getChildren()[index], content, depth + 1);
+    
+            if (isEmpty(current.getChildren()[index]) && !current.getChildren()[index].isWord()) {
+                current.getChildren()[index] = null;
             }
-            return;
-        }
-
-        int index = Content.charAt(depth);
-        index = getIndex((char) index);
-        deleteWord(current.getChildren()[index], Content, depth + 1);
-
-        if (isEmpty(current) && current.isWord() == false) {
-            current = null;
         }
     }
+    
 
     /**
      * deleteWord.
