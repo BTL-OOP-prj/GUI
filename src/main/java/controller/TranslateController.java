@@ -3,12 +3,10 @@ package main.java.controller;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 
 import main.java.Core.API.VoiceRSS;
-import com.sun.speech.freetts.Voice;
-import com.sun.speech.freetts.VoiceManager;
+import main.java.Core.main_dict.DBManager;
 import main.java.Core.API.APITranslator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -21,10 +19,6 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
 public class TranslateController implements Initializable {
-    private static final String VOICE_KEY = "freetts.voices";
-    private static final String VOICE_VALUE = "com.sun.speech.freetts.en.us.cmu_us_kal.KevinVoiceDirectory";
-    private static final String VOICE_NAME = "kevin16";
-
     private static final String[] languageChoices = { "Tiếng Anh", "Tiếng Việt", "Tiếng Hàn",
             "Tiếng Nhật", "Tiếng Nga" };
 
@@ -73,7 +67,6 @@ public class TranslateController implements Initializable {
 
     @FXML
     void handleSoundBtn1(ActionEvent event) throws Exception {
-<<<<<<< HEAD
         // String text = writePane.getText();
         // String language = languageFrom.getValue();
         // VoiceRSS.audioFilePath(text, language);
@@ -93,13 +86,11 @@ public class TranslateController implements Initializable {
             }
         });
         speakFromThread.start();
-=======
         String text = writePane.getText();
         String language = languageFrom.getValue();
         VoiceRSS.audioFilePath(text, language);
         playHitSound();
         System.out.println("end1");
->>>>>>> a01be384785ee3cf9a319b254cf9a88341cd4d66
     }
 
     @FXML
@@ -127,6 +118,7 @@ public class TranslateController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        DBManager.export();
         languageFrom.getItems().addAll(languageChoices);
         languageTo.getItems().addAll(languageChoices);
         languageFrom.setValue("Tiếng Anh");

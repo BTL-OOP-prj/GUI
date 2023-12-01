@@ -155,7 +155,6 @@ public class DBManager {
      * updateWord.
      */
     public static void updateWord(Word word) {
-        WM.updateWord(word);
         export();
     }
 

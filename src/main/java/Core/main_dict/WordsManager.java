@@ -262,7 +262,8 @@ public class WordsManager {
             return;
         }
 
-        int index = Content.charAt(depth) - 'a';
+        int index = Content.charAt(depth);
+        index = getIndex((char) index);
         deleteWord(current.getChildren()[index], Content, depth + 1);
 
         if (isEmpty(current) && current.isWord() == false) {

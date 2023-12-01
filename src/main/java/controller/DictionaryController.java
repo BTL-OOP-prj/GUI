@@ -70,7 +70,10 @@ public class DictionaryController implements Initializable {
     private Label typeLable;
 
     @FXML
-    private TextArea explainArea;
+    private TextArea meaningArea;
+
+    @FXML
+    private TextArea exampleArea;
 
     @FXML
     private ListView<String> suggestion;
@@ -91,48 +94,35 @@ public class DictionaryController implements Initializable {
         pronunciationLable.setText(word.getPronunciation());
     }
 
-    public void displayExplain(Word word) {
-        String explain = word.getMeaning() + '\n' + '\n' + word.getExample();
-        explainArea.setText(explain);
+    public void displayMeaning(Word word) {
+        meaningArea.setText(word.getMeaning());
+    }
+
+    public void displayExample(Word word) {
+        exampleArea.setText(word.getExample());
     }
 
     private void displayWord(Word word) {
         displayContent(word);
         displayType(word);
         displayPronunciation(word);
-        displayExplain(word);
+        displayMeaning(word);
+        displayExample(word);
     }
 
-    private void handleOnKeyTyped() {
+    private void handleOnKeyTyped(String searchWord) {
         list.clear();
-        String searchWord = searchBox.getText();
-<<<<<<< HEAD
-        List<Word> recWordList = WordsManager.suggestions(searchWord);
-        for (Word word : recWordList) {
-            list.add(word.getContent());
-        }
-        if (list.isEmpty()) {
-            suggestion.setItems(list);
-        } else {
-=======
+        //String searchWord = searchBox.getText();
         List<Word> recWordList = DBManager.WM.suggestions(searchWord);
-        ;
 
         for (Word word : recWordList) {
             list.add(word.getContent());
         }
-        // for (int i = 0; i <= NUM_OF_WORDS; i++) {
-        // if (i < recWordList.size()) {
-        // list.add(recWordList.get(i).getWordTarget());
-        // }
-        // }
-
         if (list.isEmpty()) {
             // notAvailable.setVisible(true);
             suggestion.setItems(list);
         } else {
             // notAvailable.setVisible(false);
->>>>>>> a01be384785ee3cf9a319b254cf9a88341cd4d66
             suggestion.setItems(list);
         }
     }
@@ -163,7 +153,8 @@ public class DictionaryController implements Initializable {
 
     @FXML
     private void HandleClickEditBtn(ActionEvent e) {
-        explainArea.setEditable(true);
+        meaningArea.setEditable(true);
+        exampleArea.setEditable(true);
         editBtn.setVisible(false);
         saveBtn.setVisible(true);
     }
@@ -184,9 +175,25 @@ public class DictionaryController implements Initializable {
 
     @FXML
     void HandleClickSaveBtn(ActionEvent event) {
-        explainArea.setEditable(false);
+        Word word = DBManager.WM.searchWord(target);
+        word.setMeaning(meaningArea.getText());
+        word.setExample(exampleArea.getText());
+        DBManager.WM.updateWord(word);
+        meaningArea.setEditable(false);
+        exampleArea.setEditable(false);
         saveBtn.setVisible(false);
         editBtn.setVisible(true);
+    }
+
+    @FXML
+    void HandleClickDeleteBtn(ActionEvent event) {
+        Word word = new Word("", "", "", "", "");
+        displayWord(word);
+        System.out.println("Từ cần xóa là: ");
+        System.out.println(target);
+        DBManager.deleteWord(target);
+        System.out.println("Đã xóa từ");
+        handleOnKeyTyped("");
     }
 
     @FXML
@@ -206,39 +213,24 @@ public class DictionaryController implements Initializable {
                 addPane.getChildren().clear();
                 // addPane.setVisible(false);
             });
-<<<<<<< HEAD
-            DBManager.scan("/src/main/resources/EV.txt");
-            handleOnKeyTyped();
-=======
->>>>>>> a01be384785ee3cf9a319b254cf9a88341cd4d66
+            handleOnKeyTyped("");
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-<<<<<<< HEAD
-    @FXML
-    void HandleClickDeleteBtn(ActionEvent event) {
-        Word word = new Word("", "", "", "", "");
-        displayWord(word);
-        DBManager.deleteWord(target);
-        System.out.println("Đã xóa từ");
-        DBManager.scan("/src/main/resources/EV.txt");
-        handleOnKeyTyped();
-    }
-
-=======
->>>>>>> a01be384785ee3cf9a319b254cf9a88341cd4d66
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        explainArea.setEditable(false);
+        meaningArea.setEditable(false);
+        exampleArea.setEditable(false);
         saveBtn.setVisible(false);
-        handleOnKeyTyped();
+        handleOnKeyTyped("");
         searchBox.setOnKeyReleased(e -> {
             if (searchBox.getText().isEmpty()) {
                 // setListDefault();
             } else {
-                handleOnKeyTyped();
+                String searchWord = searchBox.getText();
+                handleOnKeyTyped(searchWord);
             }
         });
         // DBManager.WM.suggestions("al");
