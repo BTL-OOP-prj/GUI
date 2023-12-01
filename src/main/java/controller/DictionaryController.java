@@ -112,7 +112,6 @@ public class DictionaryController implements Initializable {
 
     private void handleOnKeyTyped(String searchWord) {
         list.clear();
-        //String searchWord = searchBox.getText();
         List<Word> recWordList = DBManager.WM.suggestions(searchWord);
 
         for (Word word : recWordList) {
@@ -124,6 +123,7 @@ public class DictionaryController implements Initializable {
         } else {
             // notAvailable.setVisible(false);
             suggestion.setItems(list);
+
         }
     }
 

@@ -61,7 +61,7 @@ public class TranslateController implements Initializable {
         // String path = getClass().getResource("output.mp3").getPath();
         media = new Media(new File(path).toURI().toString());
         mediaPlayer = new MediaPlayer(media);
-        //mediaPlayer.setCycleCount(1);
+        mediaPlayer.setCycleCount(1);
         mediaPlayer.play();
     }
 
@@ -95,25 +95,11 @@ public class TranslateController implements Initializable {
 
     @FXML
     void handleSoundBtn2(ActionEvent event) throws Exception {
-//        String text = resultPane.getText();
-//        String language = languageTo.getValue();
-//        VoiceRSS.audioFilePath(text, language);
-//        playHitSound();
-//        System.out.println("end2");
-        Thread speakFromThread = new Thread(() -> {
-            try {
-                String text = resultPane.getText();
-                String language = languageTo.getValue();
-                VoiceRSS.audioFilePath(text, language);
-                playHitSound();
-                System.out.println("end2");
-            } catch (IOException ex) {
-                throw new RuntimeException(ex);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        });
-        speakFromThread.start();
+        String text = resultPane.getText();
+        String language = languageTo.getValue();
+        VoiceRSS.audioFilePath(text, language);
+        playHitSound();
+        System.out.println("end2");
     }
 
     @Override
