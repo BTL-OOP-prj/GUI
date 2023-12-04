@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.util.*;
 import java.util.prefs.Preferences;
 
-public class mcqController {
+public class mcqController extends GameManage {
     @FXML
     private AnchorPane root;
 

@@ -25,12 +25,12 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.transform.Rotate;
 
-public class FlashcardController {
+public class FlashcardController extends GameManage {
 
     @FXML
     private ListView<String> listview;
     private List<Flashcard> flashcards = new ArrayList<>();
-    private FlashcardData flashcardData;
+    //private FlashcardData flashcardData;
     private int currentCardIndex = 0;
     private boolean check = true;
     private boolean showQuestion = true;

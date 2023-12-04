@@ -18,7 +18,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
-public class TranslateController implements Initializable {
+public class TranslateController extends Controller implements Initializable {
     private static final String[] languageChoices = { "Tiếng Anh", "Tiếng Việt", "Tiếng Hàn",
             "Tiếng Nhật", "Tiếng Nga" };
 

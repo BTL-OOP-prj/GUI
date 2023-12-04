@@ -15,7 +15,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.prefs.Preferences;
 
-public class WordamentController {
+public class WordamentController extends GameManage {
     @FXML 
     private Button checkButton;
     @FXML 

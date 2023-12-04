@@ -16,7 +16,7 @@ import javafx.scene.control.TextField;
 import main.java.Core.main_dict.DBManager;
 import main.java.Core.main_dict.Word;
 
-public class AddWordController implements Initializable {
+public class AddWordController extends Controller implements Initializable {
     @FXML
     private TextField content;
 
