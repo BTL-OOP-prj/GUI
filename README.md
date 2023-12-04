@@ -1,3 +1,7 @@
+Diagram:
+![image](https://github.com/BTL-OOP-prj/GUI/assets/125387948/ae2e0e06-713d-4d75-a150-6e69b63f90ad)
+![src](https://github.com/BTL-OOP-prj/GUI/assets/125387948/2f5f10aa-cdb9-45e5-b376-4bd2272900a8)
+
 ## Getting Started
 
 Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
